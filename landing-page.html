@@ -4,752 +4,361 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JUN | @jun.omn</title>
-    <meta name="description" content="JUN - علامة جمالية فاخرة من مسقط، عُمان. بواسطة جهناء حمود.">
-    <meta property="og:title" content="JUN | @jun.omn">
+    <meta name="description" content="JUN - علامة جمالية فاخرة من مسقط، عُمان.">
     <meta property="og:image" content="images/profile/Logo.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-        :root {
-            --navy: #3D4F5F;
-            --navy-deep: #2C3E4A;
-            --navy-darker: #1E2D38;
-            --gold: #C9A96E;
-            --gold-light: #D4B896;
-            --gold-pale: #E8D5B5;
-            --gold-dim: rgba(201,169,110,0.15);
-            --cream: #F5F0E8;
-            --white: #FFFFFF;
-            --font: 'Cairo', -apple-system, BlinkMacSystemFont, sans-serif;
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --navy:#3D4F5F;--navy-d:#2C3E4A;--navy-dd:#1E2D38;
+            --gold:#C9A96E;--gold-l:#D4B896;--gold-p:#E8D5B5;--gold-dim:rgba(201,169,110,0.12);
+            --cream:#F5F0E8;--white:#FFF;
+            --font:'Cairo',-apple-system,BlinkMacSystemFont,sans-serif;
         }
-
-        [data-theme="dark"] {
-            --bg: #0D1117;
-            --bg-2: #161B22;
-            --bg-3: #1C2333;
-            --surface: rgba(61,79,95,0.25);
-            --surface-hover: rgba(61,79,95,0.4);
-            --border: rgba(201,169,110,0.12);
-            --border-hover: rgba(201,169,110,0.3);
-            --text: #F0EDE6;
-            --text-2: rgba(240,237,230,0.6);
-            --text-3: rgba(240,237,230,0.35);
-            --glow: rgba(201,169,110,0.08);
+        [data-theme="dark"]{
+            --bg:#080B10;--bg2:#0E1219;--bg3:#141A24;
+            --surface:rgba(61,79,95,0.18);--surface-h:rgba(61,79,95,0.32);
+            --border:rgba(201,169,110,0.1);--border-h:rgba(201,169,110,0.28);
+            --tx:#EDE8DF;--tx2:rgba(237,232,223,0.55);--tx3:rgba(237,232,223,0.3);
         }
-
-        [data-theme="light"] {
-            --bg: #F5F0E8;
-            --bg-2: #FFFFFF;
-            --bg-3: #FAF7F2;
-            --surface: rgba(61,79,95,0.06);
-            --surface-hover: rgba(61,79,95,0.1);
-            --border: rgba(61,79,95,0.1);
-            --border-hover: rgba(61,79,95,0.25);
-            --text: #2C3E4A;
-            --text-2: rgba(44,62,74,0.6);
-            --text-3: rgba(44,62,74,0.35);
-            --glow: rgba(201,169,110,0.1);
+        [data-theme="light"]{
+            --bg:#F5F0E8;--bg2:#FFF;--bg3:#FAF7F2;
+            --surface:rgba(61,79,95,0.05);--surface-h:rgba(61,79,95,0.09);
+            --border:rgba(61,79,95,0.08);--border-h:rgba(61,79,95,0.2);
+            --tx:#2C3E4A;--tx2:rgba(44,62,74,0.55);--tx3:rgba(44,62,74,0.3);
         }
+        html{scroll-behavior:smooth}
+        body{font-family:var(--font);background:var(--bg);color:var(--tx);overflow-x:hidden;-webkit-font-smoothing:antialiased;cursor:none}
+        ::-webkit-scrollbar{width:4px}
+        ::-webkit-scrollbar-track{background:transparent}
+        ::-webkit-scrollbar-thumb{background:var(--gold);border-radius:2px}
+        .ctr{max-width:1100px;margin:0 auto;padding:0 24px}
 
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: var(--font);
-            background: var(--bg);
-            color: var(--text);
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-            transition: background 0.6s ease, color 0.6s ease;
-        }
-
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
-
-        .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+        /* ===== CUSTOM CURSOR ===== */
+        .cursor{position:fixed;width:20px;height:20px;border:2px solid var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transition:width .3s,height .3s,border-color .3s,transform .15s ease-out;transform:translate(-50%,-50%);mix-blend-mode:difference}
+        .cursor-dot{position:fixed;width:5px;height:5px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .08s ease-out}
+        .cursor.hover{width:50px;height:50px;border-color:var(--gold-l)}
+        .cursor.hover .cursor-dot{transform:translate(-50%,-50%) scale(0)}
 
         /* ===== THEME TOGGLE ===== */
-        .theme-toggle {
-            position: fixed; bottom: 32px; left: 32px; z-index: 200;
-            width: 52px; height: 52px; border-radius: 50%;
-            background: var(--surface); border: 1px solid var(--border);
-            backdrop-filter: blur(20px); cursor: pointer;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.3rem; transition: all 0.4s ease;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-        }
-        .theme-toggle:hover { transform: scale(1.1) rotate(15deg); border-color: var(--gold); }
+        .theme-btn{position:fixed;bottom:28px;left:28px;z-index:200;width:48px;height:48px;border-radius:50%;background:var(--surface);border:1px solid var(--border);backdrop-filter:blur(20px);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.2rem;transition:all .4s;box-shadow:0 8px 32px rgba(0,0,0,.2)}
+        .theme-btn:hover{transform:scale(1.15) rotate(20deg);border-color:var(--gold)}
 
-        /* ===== NAVBAR ===== */
-        .nav {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-            padding: 20px 0; transition: all 0.5s ease;
-        }
-        .nav.scrolled {
-            padding: 14px 0;
-            background: rgba(13,17,23,0.7);
-            backdrop-filter: blur(40px) saturate(180%);
-            -webkit-backdrop-filter: blur(40px) saturate(180%);
-            border-bottom: 1px solid var(--border);
-        }
-        [data-theme="light"] .nav.scrolled {
-            background: rgba(245,240,232,0.8);
-        }
-        .nav .container { display: flex; justify-content: space-between; align-items: center; }
-        .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-        .nav-brand img { width: 36px; height: 36px; border-radius: 10px; object-fit: cover; }
-        .nav-brand span { font-size: 1.15rem; font-weight: 800; color: var(--text); letter-spacing: -0.5px; }
-        .nav-links { display: flex; gap: 36px; list-style: none; }
-        .nav-links a {
-            color: var(--text-2); text-decoration: none; font-size: 0.88rem;
-            font-weight: 500; transition: color 0.3s;
-        }
-        .nav-links a:hover { color: var(--gold); }
-        .nav-cta {
-            padding: 10px 24px; background: var(--gold); color: var(--navy-deep);
-            border: none; border-radius: 999px; font-size: 0.85rem; font-weight: 700;
-            cursor: pointer; text-decoration: none; transition: all 0.3s ease;
-            font-family: var(--font);
-        }
-        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,169,110,0.3); }
-        .mobile-btn {
-            display: none; background: none; border: none; cursor: pointer;
-            width: 36px; height: 36px; position: relative;
-        }
-        .mobile-btn span {
-            display: block; width: 22px; height: 1.5px; background: var(--text);
-            position: absolute; left: 7px; transition: all 0.3s ease;
-        }
-        .mobile-btn span:nth-child(1) { top: 11px; }
-        .mobile-btn span:nth-child(2) { top: 17px; }
-        .mobile-btn span:nth-child(3) { top: 23px; }
-        .mobile-btn.active span:nth-child(1) { top: 17px; transform: rotate(45deg); }
-        .mobile-btn.active span:nth-child(2) { opacity: 0; }
-        .mobile-btn.active span:nth-child(3) { top: 17px; transform: rotate(-45deg); }
+        /* ===== NAV ===== */
+        .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;transition:all .5s}
+        .nav.sc{padding:12px 0;background:rgba(8,11,16,.75);backdrop-filter:blur(40px) saturate(180%);border-bottom:1px solid var(--border)}
+        [data-theme="light"] .nav.sc{background:rgba(245,240,232,.8)}
+        .nav .ctr{display:flex;justify-content:space-between;align-items:center}
+        .nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+        .nav-brand img{width:34px;height:34px;border-radius:9px;object-fit:cover}
+        .nav-brand span{font-size:1.1rem;font-weight:800;color:var(--tx)}
+        .nav-links{display:flex;gap:32px;list-style:none}
+        .nav-links a{color:var(--tx2);text-decoration:none;font-size:.85rem;font-weight:500;transition:color .3s}
+        .nav-links a:hover{color:var(--gold)}
+        .nav-cta{padding:9px 22px;background:var(--gold);color:var(--navy-d);border:none;border-radius:999px;font-size:.82rem;font-weight:700;cursor:pointer;text-decoration:none;transition:all .3s;font-family:var(--font)}
+        .nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(201,169,110,.3)}
+        .mob-btn{display:none;background:none;border:none;cursor:pointer;width:34px;height:34px;position:relative}
+        .mob-btn span{display:block;width:20px;height:1.5px;background:var(--tx);position:absolute;left:7px;transition:all .3s}
+        .mob-btn span:nth-child(1){top:11px}.mob-btn span:nth-child(2){top:17px}.mob-btn span:nth-child(3){top:23px}
+        .mob-btn.act span:nth-child(1){top:17px;transform:rotate(45deg)}
+        .mob-btn.act span:nth-child(2){opacity:0}
+        .mob-btn.act span:nth-child(3){top:17px;transform:rotate(-45deg)}
+        .mob-ov{display:none;position:fixed;inset:0;z-index:99;background:var(--bg);flex-direction:column;align-items:center;justify-content:center;gap:24px}
+        .mob-ov.act{display:flex}
+        .mob-ov a{color:var(--tx);text-decoration:none;font-size:1.5rem;font-weight:700;opacity:0;transform:translateY(20px);transition:all .4s}
+        .mob-ov.act a{opacity:1;transform:translateY(0)}
+        .mob-ov.act a:nth-child(1){transition-delay:.05s}.mob-ov.act a:nth-child(2){transition-delay:.1s}
+        .mob-ov.act a:nth-child(3){transition-delay:.15s}.mob-ov.act a:nth-child(4){transition-delay:.2s}
+        .mob-ov.act a:nth-child(5){transition-delay:.25s}
 
-        .mobile-overlay {
-            display: none; position: fixed; inset: 0; z-index: 99;
-            background: var(--bg); flex-direction: column;
-            align-items: center; justify-content: center; gap: 28px;
-        }
-        .mobile-overlay.active { display: flex; }
-        .mobile-overlay a {
-            color: var(--text); text-decoration: none; font-size: 1.6rem;
-            font-weight: 700; opacity: 0; transform: translateY(20px);
-            transition: all 0.4s ease;
-        }
-        .mobile-overlay.active a { opacity: 1; transform: translateY(0); }
-        .mobile-overlay.active a:nth-child(1) { transition-delay: 0.05s; }
-        .mobile-overlay.active a:nth-child(2) { transition-delay: 0.1s; }
-        .mobile-overlay.active a:nth-child(3) { transition-delay: 0.15s; }
-        .mobile-overlay.active a:nth-child(4) { transition-delay: 0.2s; }
-        .mobile-overlay.active a:nth-child(5) { transition-delay: 0.25s; }
-        .mobile-overlay.active a:nth-child(6) { transition-delay: 0.3s; }
+        /* ===== 3D SCENE ===== */
+        .scene{perspective:1200px}
+        .t3d{transform-style:preserve-3d;transition:transform .7s cubic-bezier(.4,0,.2,1)}
 
         /* ===== HERO ===== */
-        .hero {
-            min-height: 100vh; display: flex; align-items: center;
-            justify-content: center; position: relative; overflow: hidden;
-            perspective: 1200px;
-        }
-        .hero-bg-orb {
-            position: absolute; border-radius: 50%;
-            filter: blur(120px); opacity: 0.4;
-        }
-        .hero-bg-orb.o1 {
-            width: 700px; height: 700px; background: var(--gold-dim);
-            top: -300px; right: -200px;
-            animation: orbFloat 25s ease-in-out infinite;
-        }
-        .hero-bg-orb.o2 {
-            width: 500px; height: 500px; background: rgba(61,79,95,0.2);
-            bottom: -200px; left: -150px;
-            animation: orbFloat 25s ease-in-out infinite reverse;
-        }
-        @keyframes orbFloat {
-            0%, 100% { transform: translate(0,0) scale(1); }
-            50% { transform: translate(40px, -40px) scale(1.1); }
-        }
-        .hero-content {
-            position: relative; z-index: 2; text-align: center;
-            max-width: 900px; padding: 0 24px;
-        }
-        .hero-eyebrow {
-            display: inline-flex; align-items: center; gap: 8px;
-            padding: 8px 20px; border-radius: 999px;
-            background: var(--surface); border: 1px solid var(--border);
-            font-size: 0.82rem; color: var(--gold); font-weight: 600;
-            margin-bottom: 32px; backdrop-filter: blur(10px);
-        }
-        .hero-eyebrow-dot {
-            width: 7px; height: 7px; background: var(--gold);
-            border-radius: 50%; animation: pulseDot 2s ease-in-out infinite;
-        }
-        @keyframes pulseDot {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.4; transform: scale(1.6); }
-        }
-        .hero-title {
-            font-size: clamp(3rem, 8vw, 6.5rem); font-weight: 900;
-            line-height: 1.05; margin-bottom: 28px; letter-spacing: -3px;
-        }
-        .hero-title .gold { color: var(--gold); }
-        .hero-sub {
-            font-size: clamp(1rem, 2.2vw, 1.25rem); color: var(--text-2);
-            max-width: 540px; margin: 0 auto 48px; line-height: 1.9; font-weight: 400;
-        }
-        .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-        .btn-gold {
-            display: inline-flex; align-items: center; gap: 10px;
-            padding: 18px 40px; background: var(--gold); color: var(--navy-deep);
-            border: none; border-radius: 999px; font-size: 1rem; font-weight: 700;
-            cursor: pointer; text-decoration: none; font-family: var(--font);
-            transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
-            box-shadow: 0 4px 24px rgba(201,169,110,0.25);
-            position: relative; overflow: hidden;
-        }
-        .btn-gold::after {
-            content: ''; position: absolute; inset: 0;
-            background: linear-gradient(135deg, rgba(255,255,255,0.25) 0%, transparent 60%);
-            opacity: 0; transition: opacity 0.3s;
-        }
-        .btn-gold:hover::after { opacity: 1; }
-        .btn-gold:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 12px 40px rgba(201,169,110,0.4); }
+        .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+        .hero-orbs{position:absolute;inset:0;overflow:hidden}
+        .hero-orb{position:absolute;border-radius:50%;filter:blur(140px);opacity:.35}
+        .hero-orb.a{width:800px;height:800px;background:var(--gold-dim);top:-350px;right:-250px;animation:orbA 30s ease-in-out infinite}
+        .hero-orb.b{width:600px;height:600px;background:rgba(61,79,95,.15);bottom:-250px;left:-200px;animation:orbA 30s ease-in-out infinite reverse}
+        .hero-orb.c{width:400px;height:400px;background:var(--gold-dim);top:50%;left:40%;animation:orbA 25s ease-in-out infinite 5s;opacity:.2}
+        @keyframes orbA{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(50px,-30px) scale(1.08)}66%{transform:translate(-30px,40px) scale(.92)}}
 
-        .btn-outline {
-            display: inline-flex; align-items: center; gap: 10px;
-            padding: 18px 40px; background: transparent; color: var(--text);
-            border: 1px solid var(--border); border-radius: 999px;
-            font-size: 1rem; font-weight: 600; cursor: pointer;
-            text-decoration: none; font-family: var(--font);
-            transition: all 0.3s ease; backdrop-filter: blur(10px);
-        }
-        .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+        /* Perspective Grid */
+        .hero-grid{position:absolute;bottom:0;left:0;right:0;height:60%;background-image:linear-gradient(var(--gold-dim) 1px,transparent 1px),linear-gradient(90deg,var(--gold-dim) 1px,transparent 1px);background-size:80px 80px;transform:perspective(500px) rotateX(60deg);transform-origin:bottom;mask-image:linear-gradient(to top,black 20%,transparent 70%);-webkit-mask-image:linear-gradient(to top,black 20%,transparent 70%);opacity:.4}
 
-        .hero-scroll {
-            position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
-            display: flex; flex-direction: column; align-items: center; gap: 8px;
-            color: var(--text-3); font-size: 0.75rem; letter-spacing: 2px;
-        }
-        .hero-scroll-line {
-            width: 1px; height: 48px; background: linear-gradient(to bottom, var(--gold), transparent);
-            animation: scrollLine 2s ease-in-out infinite;
-        }
-        @keyframes scrollLine {
-            0% { transform: scaleY(0); transform-origin: top; }
-            50% { transform: scaleY(1); transform-origin: top; }
-            51% { transform: scaleY(1); transform-origin: bottom; }
-            100% { transform: scaleY(0); transform-origin: bottom; }
-        }
+        .hero-content{position:relative;z-index:2;text-align:center;max-width:850px;padding:0 24px}
+        .hero-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;border-radius:999px;background:var(--surface);border:1px solid var(--border);font-size:.8rem;color:var(--gold);font-weight:600;margin-bottom:28px;backdrop-filter:blur(10px)}
+        .hero-badge-dot{width:7px;height:7px;background:var(--gold);border-radius:50%;animation:pulse 2s ease-in-out infinite}
+        @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.8)}}
 
-        /* ===== 3D CARD SYSTEM ===== */
-        .scene-3d { perspective: 1000px; }
-        .card-3d {
-            transform-style: preserve-3d;
-            transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
-        }
+        /* 3D Text Reveal */
+        .hero-title{font-size:clamp(3rem,8vw,7rem);font-weight:900;line-height:1.02;margin-bottom:24px;letter-spacing:-3px}
+        .hero-title .line{display:block;overflow:hidden}
+        .hero-title .line span{display:inline-block;transform:translateY(110%) rotateX(-80deg);transform-origin:bottom;animation:txtReveal .9s cubic-bezier(.4,0,.2,1) forwards}
+        .hero-title .line:nth-child(2) span{animation-delay:.15s}
+        .hero-title .gold{color:var(--gold)}
+        @keyframes txtReveal{to{transform:translateY(0) rotateX(0)}}
+
+        .hero-sub{font-size:clamp(1rem,2vw,1.2rem);color:var(--tx2);max-width:520px;margin:0 auto 44px;line-height:1.9}
+        .hero-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+        .btn-g{display:inline-flex;align-items:center;gap:10px;padding:16px 36px;background:var(--gold);color:var(--navy-d);border:none;border-radius:999px;font-size:.95rem;font-weight:700;cursor:pointer;text-decoration:none;font-family:var(--font);transition:all .4s cubic-bezier(.4,0,.2,1);box-shadow:0 4px 24px rgba(201,169,110,.2);position:relative;overflow:hidden}
+        .btn-g::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.3) 0%,transparent 60%);opacity:0;transition:opacity .3s}
+        .btn-g:hover::after{opacity:1}
+        .btn-g:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 12px 40px rgba(201,169,110,.4)}
+        .btn-o{display:inline-flex;align-items:center;gap:10px;padding:16px 36px;background:transparent;color:var(--tx);border:1px solid var(--border);border-radius:999px;font-size:.95rem;font-weight:600;cursor:pointer;text-decoration:none;font-family:var(--font);transition:all .3s;backdrop-filter:blur(10px)}
+        .btn-o:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
+
+        .hero-stats{display:flex;justify-content:center;gap:56px;margin-top:72px;padding-top:40px;border-top:1px solid var(--border)}
+        .hero-stat-val{font-size:2.2rem;font-weight:900;color:var(--gold);letter-spacing:-1px}
+        .hero-stat-lbl{font-size:.78rem;color:var(--tx3);margin-top:2px}
+
+        .hero-scroll{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--tx3);font-size:.7rem;letter-spacing:3px}
+        .hero-scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollL 2s ease-in-out infinite}
+        @keyframes scrollL{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 
         /* ===== SECTION ===== */
-        .section { padding: 140px 0; position: relative; }
-        .section-label {
-            display: inline-block; font-size: 0.75rem; font-weight: 700;
-            text-transform: uppercase; letter-spacing: 4px; color: var(--gold);
-            margin-bottom: 16px;
-        }
-        .section-title {
-            font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 900;
-            line-height: 1.15; letter-spacing: -1.5px; margin-bottom: 20px;
-        }
-        .section-desc {
-            font-size: 1.1rem; color: var(--text-2); max-width: 560px;
-            line-height: 1.9;
-        }
-        .section-center { text-align: center; }
-        .section-center .section-desc { margin: 0 auto; }
+        .sec{padding:140px 0;position:relative}
+        .sec-label{display:inline-block;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:4px;color:var(--gold);margin-bottom:14px}
+        .sec-title{font-size:clamp(2rem,5vw,3.6rem);font-weight:900;line-height:1.15;letter-spacing:-1.5px;margin-bottom:18px}
+        .sec-desc{font-size:1.05rem;color:var(--tx2);max-width:540px;line-height:1.9}
+        .sec-center{text-align:center}.sec-center .sec-desc{margin:0 auto}
 
-        /* ===== ABOUT 3D ===== */
-        .about-wrap {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
-        }
-        .about-visual {
-            position: relative; perspective: 800px;
-        }
-        .about-img-card {
-            width: 100%; aspect-ratio: 3/4; border-radius: 24px; overflow: hidden;
-            border: 1px solid var(--border); position: relative;
-            transform: rotateY(-5deg) rotateX(3deg);
-            transition: transform 0.8s cubic-bezier(0.4,0,0.2,1);
-            box-shadow: 20px 20px 60px rgba(0,0,0,0.3);
-        }
-        .about-img-card:hover { transform: rotateY(0deg) rotateX(0deg); }
-        .about-img-card img { width: 100%; height: 100%; object-fit: cover; }
-        .about-floating {
-            position: absolute; bottom: -24px; right: -24px;
-            background: var(--surface); backdrop-filter: blur(20px);
-            border: 1px solid var(--border); border-radius: 16px;
-            padding: 20px 24px; display: flex; align-items: center; gap: 14px;
-            animation: floatCard 5s ease-in-out infinite;
-            box-shadow: 0 12px 40px rgba(0,0,0,0.2);
-        }
-        @keyframes floatCard {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        .about-floating-icon {
-            width: 48px; height: 48px; background: var(--gold);
-            border-radius: 14px; display: flex; align-items: center;
-            justify-content: center; font-size: 1.3rem;
-        }
-        .about-floating-text span { display: block; font-size: 0.75rem; color: var(--text-3); }
-        .about-floating-text strong { font-size: 1.1rem; color: var(--text); }
+        /* ===== ABOUT ===== */
+        .about-bg{background:var(--bg2)}
+        .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+        .about-vis{position:relative}
+        .about-card{width:100%;aspect-ratio:3/4;border-radius:24px;overflow:hidden;border:1px solid var(--border);position:relative;transform:rotateY(-6deg) rotateX(4deg);transition:transform .8s cubic-bezier(.4,0,.2,1);box-shadow:24px 24px 60px rgba(0,0,0,.3)}
+        .about-card:hover{transform:rotateY(0) rotateX(0)}
+        .about-card img{width:100%;height:100%;object-fit:cover}
+        .about-float{position:absolute;bottom:-20px;right:-20px;background:var(--surface);backdrop-filter:blur(20px);border:1px solid var(--border);border-radius:16px;padding:18px 22px;display:flex;align-items:center;gap:12px;animation:flC 5s ease-in-out infinite;box-shadow:0 12px 40px rgba(0,0,0,.2)}
+        @keyframes flC{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+        .about-float-ico{width:44px;height:44px;background:var(--gold);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2rem}
+        .about-float-txt span{display:block;font-size:.72rem;color:var(--tx3)}
+        .about-float-txt strong{font-size:1rem;color:var(--tx)}
 
-        .about-content .section-label { margin-bottom: 12px; }
-        .about-text { color: var(--text-2); line-height: 2; margin-bottom: 36px; font-size: 1.05rem; }
-        .about-features { display: flex; flex-direction: column; gap: 14px; }
-        .about-feat {
-            display: flex; align-items: center; gap: 14px;
-            padding: 14px 18px; background: var(--surface);
-            border: 1px solid var(--border); border-radius: 14px;
-            transition: all 0.4s ease;
-        }
-        .about-feat:hover { border-color: var(--gold); transform: translateX(6px); }
-        .about-feat-icon {
-            width: 40px; height: 40px; background: var(--gold-dim);
-            border-radius: 10px; display: flex; align-items: center;
-            justify-content: center; font-size: 1rem; flex-shrink: 0;
-        }
-        .about-feat span { font-size: 0.95rem; color: var(--text-2); }
+        .about-txt{color:var(--tx2);line-height:2;margin-bottom:32px;font-size:1.02rem}
+        .about-feats{display:flex;flex-direction:column;gap:12px}
+        .about-ft{display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--surface);border:1px solid var(--border);border-radius:12px;transition:all .4s}
+        .about-ft:hover{border-color:var(--gold);transform:translateX(6px)}
+        .about-ft-ico{width:38px;height:38px;background:var(--gold-dim);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0}
+        .about-ft span{font-size:.92rem;color:var(--tx2)}
 
-        /* ===== FEATURES 3D ===== */
-        .features-bg { background: var(--bg-2); }
-        .feat-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
-        }
-        .feat-card {
-            background: var(--surface); border: 1px solid var(--border);
-            border-radius: 20px; padding: 36px 28px;
-            transition: all 0.5s cubic-bezier(0.4,0,0.2,1);
-            position: relative; overflow: hidden;
-            transform-style: preserve-3d;
-        }
-        .feat-card::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0;
-            height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent);
-            opacity: 0; transition: opacity 0.4s;
-        }
-        .feat-card:hover::before { opacity: 1; }
-        .feat-card:hover {
-            transform: translateY(-12px) rotateX(4deg);
-            border-color: var(--border-hover);
-            box-shadow: 0 24px 64px rgba(0,0,0,0.25);
-        }
-        .feat-icon {
-            width: 56px; height: 56px; background: var(--gold-dim);
-            border: 1px solid var(--border); border-radius: 16px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.5rem; margin-bottom: 22px;
-            transition: all 0.4s ease;
-        }
-        .feat-card:hover .feat-icon {
-            background: var(--gold); transform: translateZ(20px) scale(1.1);
-        }
-        .feat-title { font-size: 1.15rem; font-weight: 700; margin-bottom: 10px; }
-        .feat-desc { color: var(--text-2); font-size: 0.92rem; line-height: 1.8; }
+        /* ===== FEATURES ===== */
+        .feat-bg{background:var(--bg2)}
+        .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+        .feat-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:36px 26px;transition:all .5s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden;transform-style:preserve-3d}
+        .feat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .4s}
+        .feat-card:hover::before{opacity:1}
+        .feat-card:hover{border-color:var(--border-h);box-shadow:0 24px 64px rgba(0,0,0,.25)}
+        .feat-ico{width:52px;height:52px;background:var(--gold-dim);border:1px solid var(--border);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:20px;transition:all .4s}
+        .feat-card:hover .feat-ico{background:var(--gold);transform:translateZ(20px) scale(1.1)}
+        .feat-t{font-size:1.1rem;font-weight:700;margin-bottom:8px}
+        .feat-d{color:var(--tx2);font-size:.9rem;line-height:1.8}
 
-        /* ===== PRODUCT 3D SHOWCASE ===== */
-        .showcase { padding: 160px 0; overflow: hidden; }
-        .showcase-stage {
-            display: flex; align-items: center; gap: 80px;
-            perspective: 1200px;
-        }
-        .showcase-visual {
-            flex: 1; position: relative;
-        }
-        .showcase-card-3d {
-            width: 100%; aspect-ratio: 1; border-radius: 32px;
-            background: var(--surface); border: 1px solid var(--border);
-            display: flex; align-items: center; justify-content: center;
-            transform: rotateY(-8deg) rotateX(5deg);
-            transition: transform 0.8s cubic-bezier(0.4,0,0.2,1);
-            box-shadow: 30px 30px 80px rgba(0,0,0,0.3);
-            overflow: hidden; position: relative;
-        }
-        .showcase-card-3d:hover { transform: rotateY(0deg) rotateX(0deg); }
-        .showcase-card-3d img {
-            width: 70%; height: 70%; object-fit: contain;
-            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.3));
-        }
-        .showcase-ring {
-            position: absolute; width: 120%; height: 120%;
-            border: 1px solid var(--border); border-radius: 50%;
-            animation: ringRotate 20s linear infinite;
-        }
-        .showcase-ring:nth-child(2) {
-            width: 140%; height: 140%; animation-duration: 30s;
-            animation-direction: reverse; opacity: 0.5;
-        }
-        @keyframes ringRotate { to { transform: rotate(360deg); } }
+        /* ===== SHOWCASE 3D ===== */
+        .show{padding:160px 0;overflow:hidden}
+        .show-stage{display:flex;align-items:center;gap:72px}
+        .show-vis{flex:1;position:relative;display:flex;align-items:center;justify-content:center;min-height:400px}
+        .show-ring{position:absolute;border:1px solid var(--border);border-radius:50%;animation:spin 20s linear infinite}
+        .show-ring.r1{width:300px;height:300px}
+        .show-ring.r2{width:380px;height:380px;animation-duration:30s;animation-direction:reverse;opacity:.5}
+        .show-ring.r3{width:460px;height:460px;animation-duration:40s;opacity:.3}
+        @keyframes spin{to{transform:rotate(360deg)}}
+        .show-logo{width:180px;height:180px;border-radius:50%;object-fit:cover;border:2px solid var(--border);position:relative;z-index:2;box-shadow:0 0 80px rgba(201,169,110,.15);transition:all .6s}
+        .show-logo:hover{transform:scale(1.08);box-shadow:0 0 100px rgba(201,169,110,.25)}
 
-        .showcase-info { flex: 1; }
-        .showcase-info .section-label { margin-bottom: 12px; }
-        .showcase-title {
-            font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 900;
-            line-height: 1.15; letter-spacing: -1px; margin-bottom: 20px;
-        }
-        .showcase-text { color: var(--text-2); line-height: 1.9; margin-bottom: 36px; font-size: 1.05rem; }
-        .showcase-stats { display: flex; gap: 48px; margin-bottom: 40px; }
-        .showcase-stat-val {
-            font-size: 2.2rem; font-weight: 900; color: var(--gold);
-            letter-spacing: -1px;
-        }
-        .showcase-stat-label { font-size: 0.8rem; color: var(--text-3); margin-top: 4px; }
+        .show-info{flex:1}
+        .show-txt{color:var(--tx2);line-height:1.9;margin-bottom:32px;font-size:1.02rem}
+        .show-stats{display:flex;gap:40px;margin-bottom:36px}
+        .show-sv{font-size:2rem;font-weight:900;color:var(--gold);letter-spacing:-1px}
+        .show-sl{font-size:.78rem;color:var(--tx3);margin-top:2px}
 
         /* ===== GALLERY ===== */
-        .gallery-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
-        }
-        .gallery-item {
-            border-radius: 20px; overflow: hidden; position: relative;
-            border: 1px solid var(--border);
-            transition: all 0.5s cubic-bezier(0.4,0,0.2,1);
-            transform-style: preserve-3d;
-        }
-        .gallery-item:hover {
-            transform: translateY(-10px) rotateX(3deg);
-            box-shadow: 0 24px 64px rgba(0,0,0,0.25);
-        }
-        .gallery-item img {
-            width: 100%; aspect-ratio: 1; object-fit: cover;
-            transition: transform 0.7s cubic-bezier(0.4,0,0.2,1);
-        }
-        .gallery-item:hover img { transform: scale(1.06); }
-        .gallery-overlay {
-            position: absolute; inset: 0;
-            background: linear-gradient(to top, rgba(13,17,23,0.85) 0%, transparent 50%);
-            display: flex; align-items: flex-end; padding: 24px;
-            opacity: 0; transition: opacity 0.4s;
-        }
-        .gallery-item:hover .gallery-overlay { opacity: 1; }
-        .gallery-overlay span { color: var(--gold); font-weight: 600; font-size: 0.9rem; }
+        .gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+        .gal-item{border-radius:20px;overflow:hidden;position:relative;border:1px solid var(--border);transition:all .5s cubic-bezier(.4,0,.2,1);transform-style:preserve-3d}
+        .gal-item:hover{box-shadow:0 24px 64px rgba(0,0,0,.25)}
+        .gal-item img{width:100%;aspect-ratio:1;object-fit:cover;transition:transform .7s cubic-bezier(.4,0,.2,1)}
+        .gal-item:hover img{transform:scale(1.06)}
+        .gal-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,11,16,.85) 0%,transparent 50%);display:flex;align-items:flex-end;padding:22px;opacity:0;transition:opacity .4s}
+        .gal-item:hover .gal-ov{opacity:1}
+        .gal-ov span{color:var(--gold);font-weight:600;font-size:.88rem}
 
         /* ===== TESTIMONIALS ===== */
-        .testi-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
-        }
-        .testi-card {
-            background: var(--surface); border: 1px solid var(--border);
-            border-radius: 20px; padding: 32px;
-            transition: all 0.4s ease;
-        }
-        .testi-card:hover {
-            transform: translateY(-6px);
-            border-color: var(--border-hover);
-        }
-        .testi-stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 16px; letter-spacing: 2px; }
-        .testi-text {
-            color: var(--text-2); font-size: 0.95rem; line-height: 1.9;
-            margin-bottom: 24px; font-style: italic;
-        }
-        .testi-author { display: flex; align-items: center; gap: 12px; }
-        .testi-avatar {
-            width: 44px; height: 44px; border-radius: 50%;
-            background: var(--gold); display: flex; align-items: center;
-            justify-content: center; font-weight: 800; color: var(--navy-deep);
-            font-size: 0.9rem;
-        }
-        .testi-name { font-weight: 700; font-size: 0.9rem; }
-        .testi-loc { font-size: 0.78rem; color: var(--text-3); }
-
-        /* ===== PRICING ===== */
-        .pricing-bg { background: var(--bg-2); }
-        .pricing-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
-            align-items: start;
-        }
-        .price-card {
-            background: var(--surface); border: 1px solid var(--border);
-            border-radius: 24px; padding: 40px 28px;
-            transition: all 0.5s cubic-bezier(0.4,0,0.2,1);
-            position: relative;
-        }
-        .price-card.featured {
-            border-color: var(--gold);
-            background: linear-gradient(160deg, rgba(201,169,110,0.08) 0%, var(--surface) 100%);
-            transform: scale(1.04);
-        }
-        .price-card.featured::before {
-            content: 'الأكثر طلباً';
-            position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
-            padding: 5px 18px; background: var(--gold); color: var(--navy-deep);
-            border-radius: 999px; font-size: 0.72rem; font-weight: 800;
-        }
-        .price-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-        }
-        .price-card.featured:hover { transform: scale(1.04) translateY(-8px); }
-        .price-name { font-size: 1rem; font-weight: 600; color: var(--text-2); margin-bottom: 12px; }
-        .price-val {
-            font-size: 3.2rem; font-weight: 900; color: var(--gold);
-            letter-spacing: -2px; margin-bottom: 4px;
-        }
-        .price-val small { font-size: 1rem; font-weight: 500; color: var(--text-3); letter-spacing: 0; }
-        .price-period { font-size: 0.82rem; color: var(--text-3); margin-bottom: 28px; }
-        .price-list { list-style: none; margin-bottom: 32px; }
-        .price-list li {
-            display: flex; align-items: center; gap: 10px;
-            padding: 10px 0; border-bottom: 1px solid var(--border);
-            font-size: 0.88rem; color: var(--text-2);
-        }
-        .price-list li:last-child { border-bottom: none; }
-        .price-check { color: var(--gold); font-weight: 700; }
-        .price-btn {
-            display: block; width: 100%; padding: 14px; text-align: center;
-            border-radius: 999px; font-size: 0.92rem; font-weight: 700;
-            cursor: pointer; text-decoration: none; transition: all 0.3s ease;
-            font-family: var(--font); border: none;
-        }
-        .price-btn-gold { background: var(--gold); color: var(--navy-deep); }
-        .price-btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,169,110,0.3); }
-        .price-btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
-        .price-btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+        .test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+        .test-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:30px;transition:all .4s}
+        .test-card:hover{transform:translateY(-6px);border-color:var(--border-h)}
+        .test-stars{color:var(--gold);font-size:.88rem;margin-bottom:14px;letter-spacing:2px}
+        .test-txt{color:var(--tx2);font-size:.92rem;line-height:1.9;margin-bottom:20px;font-style:italic}
+        .test-auth{display:flex;align-items:center;gap:10px}
+        .test-av{width:42px;height:42px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--navy-d);font-size:.88rem}
+        .test-nm{font-weight:700;font-size:.88rem}
+        .test-loc{font-size:.75rem;color:var(--tx3)}
 
         /* ===== CONTACT ===== */
-        .contact-grid {
-            display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
-        }
-        .contact-card {
-            background: var(--surface); border: 1px solid var(--border);
-            border-radius: 20px; padding: 36px;
-            text-decoration: none; color: inherit;
-            transition: all 0.4s ease; display: block;
-        }
-        .contact-card:hover {
-            transform: translateY(-6px);
-            border-color: var(--border-hover);
-        }
-        .contact-icon {
-            width: 52px; height: 52px; background: var(--gold-dim);
-            border: 1px solid var(--border); border-radius: 14px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.4rem; margin-bottom: 18px;
-            transition: all 0.3s;
-        }
-        .contact-card:hover .contact-icon { background: var(--gold); }
-        .contact-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; }
-        .contact-card p { color: var(--text-2); font-size: 0.9rem; line-height: 1.7; margin-bottom: 16px; }
-        .contact-link {
-            display: inline-flex; align-items: center; gap: 6px;
-            color: var(--gold); font-weight: 600; font-size: 0.88rem;
-            transition: gap 0.3s;
-        }
-        .contact-card:hover .contact-link { gap: 10px; }
+        .contact-bg{background:var(--bg2)}
+        .contact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+        .contact-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:34px;text-decoration:none;color:inherit;transition:all .4s;display:block}
+        .contact-card:hover{transform:translateY(-6px);border-color:var(--border-h)}
+        .contact-ico{width:50px;height:50px;background:var(--gold-dim);border:1px solid var(--border);border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:16px;transition:all .3s}
+        .contact-card:hover .contact-ico{background:var(--gold)}
+        .contact-card h3{font-size:1.1rem;font-weight:700;margin-bottom:6px}
+        .contact-card p{color:var(--tx2);font-size:.88rem;line-height:1.7;margin-bottom:14px}
+        .contact-link{display:inline-flex;align-items:center;gap:6px;color:var(--gold);font-weight:600;font-size:.85rem;transition:gap .3s}
+        .contact-card:hover .contact-link{gap:10px}
 
         /* ===== CTA ===== */
-        .cta { padding: 160px 0; text-align: center; position: relative; overflow: hidden; }
-        .cta-glow {
-            position: absolute; width: 600px; height: 600px;
-            background: var(--gold-dim); border-radius: 50%;
-            top: 50%; left: 50%; transform: translate(-50%, -50%);
-            filter: blur(150px); opacity: 0.3;
-        }
-        .cta-content { position: relative; z-index: 2; }
-        .cta-title {
-            font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 900;
-            letter-spacing: -2px; margin-bottom: 20px; line-height: 1.1;
-        }
-        .cta-desc {
-            font-size: 1.1rem; color: var(--text-2);
-            max-width: 480px; margin: 0 auto 40px; line-height: 1.9;
-        }
+        .cta{padding:160px 0;text-align:center;position:relative;overflow:hidden}
+        .cta-glow{position:absolute;width:600px;height:600px;background:var(--gold-dim);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);filter:blur(160px);opacity:.25}
+        .cta-title{font-size:clamp(2rem,5vw,3.8rem);font-weight:900;letter-spacing:-2px;margin-bottom:18px;line-height:1.1}
+        .cta-desc{font-size:1.05rem;color:var(--tx2);max-width:460px;margin:0 auto 36px;line-height:1.9}
 
         /* ===== FOOTER ===== */
-        .footer {
-            border-top: 1px solid var(--border); padding: 64px 0 40px;
-        }
-        .footer-grid {
-            display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px;
-            margin-bottom: 48px;
-        }
-        .footer-brand p { color: var(--text-3); font-size: 0.88rem; margin-top: 12px; line-height: 1.7; max-width: 280px; }
-        .footer-social { display: flex; gap: 10px; margin-top: 18px; }
-        .footer-social a {
-            width: 40px; height: 40px; background: var(--surface);
-            border: 1px solid var(--border); border-radius: 12px;
-            display: flex; align-items: center; justify-content: center;
-            text-decoration: none; font-size: 1rem;
-            transition: all 0.3s;
-        }
-        .footer-social a:hover { background: var(--gold); transform: translateY(-2px); }
-        .footer-col h4 {
-            font-size: 0.78rem; font-weight: 700; text-transform: uppercase;
-            letter-spacing: 2px; color: var(--text-3); margin-bottom: 18px;
-        }
-        .footer-col a {
-            display: block; color: var(--text-2); text-decoration: none;
-            font-size: 0.88rem; padding: 5px 0; transition: color 0.3s;
-        }
-        .footer-col a:hover { color: var(--gold); }
-        .footer-bottom {
-            display: flex; justify-content: space-between; align-items: center;
-            padding-top: 28px; border-top: 1px solid var(--border);
-            font-size: 0.82rem; color: var(--text-3);
-        }
+        .footer{border-top:1px solid var(--border);padding:60px 0 36px}
+        .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:44px;margin-bottom:44px}
+        .footer-brand p{color:var(--tx3);font-size:.85rem;margin-top:10px;line-height:1.7;max-width:270px}
+        .footer-social{display:flex;gap:9px;margin-top:16px}
+        .footer-social a{width:38px;height:38px;background:var(--surface);border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:.95rem;transition:all .3s}
+        .footer-social a:hover{background:var(--gold);transform:translateY(-2px)}
+        .footer-col h4{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--tx3);margin-bottom:16px}
+        .footer-col a{display:block;color:var(--tx2);text-decoration:none;font-size:.85rem;padding:4px 0;transition:color .3s}
+        .footer-col a:hover{color:var(--gold)}
+        .footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid var(--border);font-size:.8rem;color:var(--tx3)}
 
         /* ===== ANIMATIONS ===== */
-        .anim { opacity: 0; transform: translateY(50px); transition: all 0.9s cubic-bezier(0.4,0,0.2,1); }
-        .anim.active { opacity: 1; transform: translateY(0); }
-        .anim-d1 { transition-delay: 0.1s; }
-        .anim-d2 { transition-delay: 0.2s; }
-        .anim-d3 { transition-delay: 0.3s; }
-        .anim-d4 { transition-delay: 0.4s; }
-        .anim-d5 { transition-delay: 0.5s; }
+        .a{opacity:0;transform:translateY(50px);transition:all .9s cubic-bezier(.4,0,.2,1)}
+        .a.on{opacity:1;transform:translateY(0)}
+        .a1{transition-delay:.1s}.a2{transition-delay:.2s}.a3{transition-delay:.3s}.a4{transition-delay:.4s}.a5{transition-delay:.5s}
+
+        /* Magnetic pull */
+        .mag{transition:transform .3s cubic-bezier(.4,0,.2,1)}
+
+        /* Tilt 3D on mouse */
+        .tilt{transition:transform .15s ease-out}
+
+        /* ===== LOADER ===== */
+        .loader{position:fixed;inset:0;background:var(--bg);z-index:9999;display:flex;align-items:center;justify-content:center;transition:opacity .6s,visibility .6s}
+        .loader.hide{opacity:0;visibility:hidden;pointer-events:none}
+        .loader-ring{width:36px;height:36px;border:2px solid var(--border);border-top-color:var(--gold);border-radius:50%;animation:spin .7s linear infinite}
 
         /* ===== RESPONSIVE ===== */
-        @media (max-width: 1024px) {
-            .feat-grid, .testi-grid, .pricing-grid { grid-template-columns: repeat(2, 1fr); }
-            .price-card.featured { transform: scale(1); }
-            .price-card.featured:hover { transform: translateY(-8px); }
-            .showcase-stage { flex-direction: column; gap: 48px; }
-            .showcase-card-3d { transform: rotateY(0) rotateX(0); max-width: 400px; margin: 0 auto; }
-            .footer-grid { grid-template-columns: 1fr 1fr; }
+        @media(max-width:1024px){
+            .feat-grid,.test-grid,.gal-grid,.contact-grid{grid-template-columns:repeat(2,1fr)}
+            .show-stage{flex-direction:column;gap:48px}
+            .footer-grid{grid-template-columns:1fr 1fr}
         }
-        @media (max-width: 768px) {
-            .nav-links, .nav-cta { display: none; }
-            .mobile-btn { display: block; }
-            .about-wrap { grid-template-columns: 1fr; gap: 48px; }
-            .about-img-card { transform: none; max-width: 360px; margin: 0 auto; }
-            .feat-grid, .testi-grid, .pricing-grid, .gallery-grid, .contact-grid { grid-template-columns: 1fr; }
-            .footer-grid { grid-template-columns: 1fr; }
-            .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
-            .showcase-stats { gap: 28px; }
-            .hero-title { letter-spacing: -1.5px; }
+        @media(max-width:768px){
+            body{cursor:auto}
+            .cursor,.cursor-dot{display:none}
+            .nav-links,.nav-cta{display:none}
+            .mob-btn{display:block}
+            .about-grid{grid-template-columns:1fr;gap:40px}
+            .about-card{transform:none;max-width:340px;margin:0 auto}
+            .feat-grid,.test-grid,.gal-grid,.contact-grid{grid-template-columns:1fr}
+            .footer-grid{grid-template-columns:1fr}
+            .footer-bottom{flex-direction:column;gap:8px;text-align:center}
+            .hero-stats{gap:28px;flex-wrap:wrap}
         }
-        @media (max-width: 480px) {
-            .hero-actions { flex-direction: column; align-items: center; }
-            .btn-gold, .btn-outline { width: 100%; justify-content: center; }
+        @media(max-width:480px){
+            .hero-actions{flex-direction:column;align-items:center}
+            .btn-g,.btn-o{width:100%;justify-content:center}
         }
-
-        /* ===== LOADING ===== */
-        .loader {
-            position: fixed; inset: 0; background: var(--bg); z-index: 9999;
-            display: flex; align-items: center; justify-content: center;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
-        }
-        .loader.hide { opacity: 0; visibility: hidden; pointer-events: none; }
-        .loader-spinner {
-            width: 40px; height: 40px; border: 2px solid var(--border);
-            border-top-color: var(--gold); border-radius: 50%;
-            animation: spin 0.7s linear infinite;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
-    <div id="loader" class="loader"><div class="loader-spinner"></div></div>
+    <div id="loader" class="loader"><div class="loader-ring"></div></div>
 
-    <!-- Theme Toggle -->
-    <button id="themeToggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">🌙</button>
+    <!-- Custom Cursor -->
+    <div id="cursor" class="cursor"><div class="cursor-dot"></div></div>
 
-    <!-- Mobile Overlay -->
-    <div id="mobileOverlay" class="mobile-overlay">
+    <!-- Theme -->
+    <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">🌙</button>
+
+    <!-- Mobile -->
+    <div id="mobOv" class="mob-ov">
         <a href="#home" onclick="closeMob()">الرئيسية</a>
         <a href="#about" onclick="closeMob()">من نحن</a>
         <a href="#features" onclick="closeMob()">المميزات</a>
         <a href="#gallery" onclick="closeMob()">المعرض</a>
-        <a href="#pricing" onclick="closeMob()">الباقات</a>
         <a href="#contact" onclick="closeMob()">تواصلي معنا</a>
     </div>
 
     <!-- Nav -->
     <nav id="nav" class="nav">
-        <div class="container">
-            <a href="#home" class="nav-brand">
-                <img src="images/profile/Logo.jpg" alt="JUN">
-                <span>JUN</span>
-            </a>
+        <div class="ctr">
+            <a href="#home" class="nav-brand"><img src="images/profile/Logo.jpg" alt="JUN"><span>JUN</span></a>
             <ul class="nav-links">
                 <li><a href="#home">الرئيسية</a></li>
                 <li><a href="#about">من نحن</a></li>
                 <li><a href="#features">المميزات</a></li>
                 <li><a href="#gallery">المعرض</a></li>
-                <li><a href="#pricing">الباقات</a></li>
             </ul>
             <a href="#contact" class="nav-cta">تواصلي معنا</a>
-            <button id="mobBtn" class="mobile-btn" onclick="toggleMob()">
-                <span></span><span></span><span></span>
-            </button>
+            <button id="mobBtn" class="mob-btn" onclick="toggleMob()"><span></span><span></span><span></span></button>
         </div>
     </nav>
 
     <!-- HERO -->
     <section id="home" class="hero">
-        <div class="hero-bg-orb o1"></div>
-        <div class="hero-bg-orb o2"></div>
+        <div class="hero-orbs">
+            <div class="hero-orb a"></div>
+            <div class="hero-orb b"></div>
+            <div class="hero-orb c"></div>
+        </div>
+        <div class="hero-grid"></div>
         <div class="hero-content">
-            <div class="hero-eyebrow anim">
-                <span class="hero-eyebrow-dot"></span>
+            <div class="hero-badge a">
+                <span class="hero-badge-dot"></span>
                 مسقط، عُمان
             </div>
-            <h1 class="hero-title anim anim-d1">
-                جمالك<br><span class="gold">يبدأ من هنا</span>
+            <h1 class="hero-title">
+                <span class="line"><span>جمالك</span></span>
+                <span class="line"><span class="gold">يبدأ من هنا</span></span>
             </h1>
-            <p class="hero-sub anim anim-d2">
-                منتجات عناية بالبشرة طبيعية عالية الجودة. تصميم أنيق، نتائج حقيقية، وأسعار تنافسية من قلب عُمان.
-            </p>
-            <div class="hero-actions anim anim-d3">
-                <a href="https://wa.me/96899166008" target="_blank" class="btn-gold">
+            <p class="hero-sub a a1">منتجات عناية بالبشرة طبيعية عالية الجودة. تصميم أنيق، نتائج حقيقية، وأسعار تنافسية من قلب عُمان.</p>
+            <div class="hero-actions a a2">
+                <a href="https://wa.me/96899166008" target="_blank" class="btn-g mag">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                     اطلبي الآن
                 </a>
-                <a href="#about" class="btn-outline">
+                <a href="#about" class="btn-o mag">
                     اكتشفي المزيد
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
                 </a>
             </div>
+            <div class="hero-stats a a3">
+                <div><div class="hero-stat-val">85K+</div><div class="hero-stat-lbl">متابع</div></div>
+                <div><div class="hero-stat-val">500+</div><div class="hero-stat-lbl">منشور</div></div>
+                <div><div class="hero-stat-val">4.9</div><div class="hero-stat-lbl">تقييم</div></div>
+                <div><div class="hero-stat-val">🇴🇲</div><div class="hero-stat-lbl">مسقط، عُمان</div></div>
+            </div>
         </div>
-        <div class="hero-scroll">
-            <div class="hero-scroll-line"></div>
-        </div>
+        <div class="hero-scroll"><div class="hero-scroll-line"></div></div>
     </section>
 
     <!-- ABOUT -->
-    <section id="about" class="section">
-        <div class="container">
-            <div class="about-wrap">
-                <div class="about-visual anim">
-                    <div class="about-img-card">
+    <section id="about" class="sec about-bg">
+        <div class="ctr">
+            <div class="about-grid">
+                <div class="about-vis a">
+                    <div class="about-card">
                         <img src="images/profile/Logo.jpg" alt="JUN Brand">
                     </div>
-                    <div class="about-floating">
-                        <div class="about-floating-icon">✨</div>
-                        <div class="about-floating-text">
-                            <span>المتابعون</span>
-                            <strong>+85,000</strong>
-                        </div>
+                    <div class="about-float">
+                        <div class="about-float-ico">✨</div>
+                        <div class="about-float-txt"><span>المتابعون</span><strong>+85,000</strong></div>
                     </div>
                 </div>
-                <div class="about-content">
-                    <div class="section-label anim">من نحن</div>
-                    <h2 class="section-title anim anim-d1">علامة عمانية<br>أصيلة وفاخرة</h2>
-                    <p class="about-text anim anim-d2">
-                        أنا جهناء حمود، صانعة محتوى عمانية من مسقط. أقدم لكم JUN، علامتي الشخصية التي تجمع بين الجمال والأصالة العمانية. أؤمن بأن الجمال الحقيقي يكمن في التفاصيل الصغيرة.
-                    </p>
-                    <div class="about-features anim anim-d3">
-                        <div class="about-feat">
-                            <div class="about-feat-icon">🌿</div>
-                            <span>منتجات طبيعية 100% معتمدة</span>
-                        </div>
-                        <div class="about-feat">
-                            <div class="about-feat-icon">💎</div>
-                            <span>جودة عالية بأسعار تنافسية</span>
-                        </div>
-                        <div class="about-feat">
-                            <div class="about-feat-icon">🚀</div>
-                            <span>توصيل سريع لجميع أنحاء عُمان</span>
-                        </div>
+                <div>
+                    <div class="sec-label a">من نحن</div>
+                    <h2 class="sec-title a a1">علامة عمانية<br>أصيلة وفاخرة</h2>
+                    <p class="about-txt a a2">أنا جهناء حمود، صانعة محتوى عمانية من مسقط. أقدم لكم JUN، علامتي الشخصية التي تجمع بين الجمال والأصالة العمانية. أؤمن بأن الجمال الحقيقي يكمن في التفاصيل الصغيرة.</p>
+                    <div class="about-feats a a3">
+                        <div class="about-ft"><div class="about-ft-ico">🌿</div><span>منتجات طبيعية 100% معتمدة</span></div>
+                        <div class="about-ft"><div class="about-ft-ico">💎</div><span>جودة عالية بأسعار تنافسية</span></div>
+                        <div class="about-ft"><div class="about-ft-ico">🚀</div><span>توصيل سريع لجميع أنحاء عُمان</span></div>
                     </div>
                 </div>
             </div>
@@ -757,236 +366,92 @@
     </section>
 
     <!-- FEATURES -->
-    <section id="features" class="section features-bg">
-        <div class="container">
-            <div class="section-center">
-                <div class="section-label anim">المميزات</div>
-                <h2 class="section-title anim anim-d1">لماذا تختارين <span class="gold">JUN</span></h2>
-                <p class="section-desc anim anim-d2">تجربة فريدة تجمع بين الجمال الطبيعي والجودة العالية</p>
+    <section id="features" class="sec feat-bg">
+        <div class="ctr">
+            <div class="sec-center">
+                <div class="sec-label a">المميزات</div>
+                <h2 class="sec-title a a1">لماذا تختارين <span class="gold">JUN</span></h2>
+                <p class="sec-desc a a2">تجربة فريدة تجمع بين الجمال الطبيعي والجودة العالية</p>
             </div>
-            <div class="feat-grid" style="margin-top:64px;">
-                <div class="feat-card anim">
-                    <div class="feat-icon">🧴</div>
-                    <h3 class="feat-title">عناية متكاملة</h3>
-                    <p class="feat-desc">مجموعة مختارة من منتجات العناية بالبشرة الطبيعية</p>
-                </div>
-                <div class="feat-card anim anim-d1">
-                    <div class="feat-icon">🌸</div>
-                    <h3 class="feat-title">مكياج أنيق</h3>
-                    <p class="feat-desc">مستحضرات تجميل عصرية لإطلالة طبيعية متألقة</p>
-                </div>
-                <div class="feat-card anim anim-d2">
-                    <div class="feat-icon">✨</div>
-                    <h3 class="feat-title">محتوى إلهامي</h3>
-                    <p class="feat-desc">نصائح يومية من خبرة حقيقية في عالم الجمال</p>
-                </div>
-                <div class="feat-card anim anim-d3">
-                    <div class="feat-icon">🇴🇲</div>
-                    <h3 class="feat-title">أصالة عمانية</h3>
-                    <p class="feat-desc">علامة 100% عمانية تجمع بين التراث والحداثة</p>
-                </div>
-                <div class="feat-card anim anim-d4">
-                    <div class="feat-icon">📦</div>
-                    <h3 class="feat-title">توصيل سريع</h3>
-                    <p class="feat-desc">خدمة توصيل موثوقة لجميع محافظات عُمان</p>
-                </div>
-                <div class="feat-card anim anim-d5">
-                    <div class="feat-icon">💬</div>
-                    <h3 class="feat-title">دعم مباشر</h3>
-                    <p class="feat-desc">تواصل فوري عبر واتساب لجميع استفساراتك</p>
-                </div>
+            <div class="feat-grid" style="margin-top:60px">
+                <div class="feat-card tilt a"><div class="feat-ico">🧴</div><h3 class="feat-t">عناية متكاملة</h3><p class="feat-d">مجموعة مختارة من منتجات العناية بالبشرة الطبيعية</p></div>
+                <div class="feat-card tilt a a1"><div class="feat-ico">🌸</div><h3 class="feat-t">مكياج أنيق</h3><p class="feat-d">مستحضرات تجميل عصرية لإطلالة طبيعية متألقة</p></div>
+                <div class="feat-card tilt a a2"><div class="feat-ico">✨</div><h3 class="feat-t">محتوى إلهامي</h3><p class="feat-d">نصائح يومية من خبرة حقيقية في عالم الجمال</p></div>
+                <div class="feat-card tilt a a3"><div class="feat-ico">🇴🇲</div><h3 class="feat-t">أصالة عمانية</h3><p class="feat-d">علامة 100% عمانية تجمع بين التراث والحداثة</p></div>
+                <div class="feat-card tilt a a4"><div class="feat-ico">📦</div><h3 class="feat-t">توصيل سريع</h3><p class="feat-d">خدمة توصيل موثوقة لجميع محافظات عُمان</p></div>
+                <div class="feat-card tilt a a5"><div class="feat-ico">💬</div><h3 class="feat-t">دعم مباشر</h3><p class="feat-d">تواصل فوري عبر واتساب لجميع استفساراتك</p></div>
             </div>
         </div>
     </section>
 
     <!-- SHOWCASE -->
-    <section class="showcase">
-        <div class="container">
-            <div class="showcase-stage">
-                <div class="showcase-visual anim">
-                    <div class="showcase-card-3d">
-                        <div class="showcase-ring"></div>
-                        <div class="showcase-ring"></div>
-                        <img src="images/profile/Logo.jpg" alt="JUN Product">
-                    </div>
+    <section class="show">
+        <div class="ctr">
+            <div class="show-stage">
+                <div class="show-vis a">
+                    <div class="show-ring r1"></div>
+                    <div class="show-ring r2"></div>
+                    <div class="show-ring r3"></div>
+                    <img src="images/profile/Logo.jpg" alt="JUN" class="show-logo">
                 </div>
-                <div class="showcase-info">
-                    <div class="section-label anim">المنتج الرئيسي</div>
-                    <h2 class="showcase-title anim anim-d1">جمال يتجاوز<br>التوقعات</h2>
-                    <p class="showcase-text anim anim-d2">كل منتج في مجموعة JUN يمر بمراحل اختبار صارمة لضمان أعلى معايير الجودة. نستخدم مكونات طبيعية مختارة بعناية من أجود المصادر.</p>
-                    <div class="showcase-stats anim anim-d3">
-                        <div>
-                            <div class="showcase-stat-val">100%</div>
-                            <div class="showcase-stat-label">مكونات طبيعية</div>
-                        </div>
-                        <div>
-                            <div class="showcase-stat-val">85K+</div>
-                            <div class="showcase-stat-label">عملية راضية</div>
-                        </div>
-                        <div>
-                            <div class="showcase-stat-val">4.9</div>
-                            <div class="showcase-stat-label">متوسط التقييم</div>
-                        </div>
+                <div class="show-info">
+                    <div class="sec-label a">المنتج الرئيسي</div>
+                    <h2 class="sec-title a a1">جمال يتجاوز<br>التوقعات</h2>
+                    <p class="show-txt a a2">كل منتج في مجموعة JUN يمر بمراحل اختبار صارمة لضمان أعلى معايير الجودة. نستخدم مكونات طبيعية مختارة بعناية من أجود المصادر.</p>
+                    <div class="show-stats a a3">
+                        <div><div class="show-sv">100%</div><div class="show-sl">مكونات طبيعية</div></div>
+                        <div><div class="show-sv">85K+</div><div class="show-sl">عملية راضية</div></div>
+                        <div><div class="show-sv">4.9</div><div class="show-sl">متوسط التقييم</div></div>
                     </div>
-                    <a href="https://wa.me/96899166008" target="_blank" class="btn-gold anim anim-d4">اطلبي الآن</a>
+                    <a href="https://wa.me/96899166008" target="_blank" class="btn-g mag a a4">اطلبي الآن</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- GALLERY -->
-    <section id="gallery" class="section features-bg">
-        <div class="container">
-            <div class="section-center">
-                <div class="section-label anim">المعرض</div>
-                <h2 class="section-title anim anim-d1">لحظات <span class="gold">أنيقة</span></h2>
-                <p class="section-desc anim anim-d2">استعرضي أجمل المنشورات من حسابنا</p>
+    <section id="gallery" class="sec feat-bg">
+        <div class="ctr">
+            <div class="sec-center">
+                <div class="sec-label a">المعرض</div>
+                <h2 class="sec-title a a1">لحظات <span class="gold">أنيقة</span></h2>
+                <p class="sec-desc a a2">استعرضي أجمل المنشورات من حسابنا</p>
             </div>
-            <div class="gallery-grid" style="margin-top:64px;">
-                <div class="gallery-item anim">
-                    <img src="images/posts/post_DN2o87v2GTL.jpg" alt="Post 1" onerror="this.src='images/profile/Logo.jpg'">
-                    <div class="gallery-overlay"><span>@jun.omn</span></div>
-                </div>
-                <div class="gallery-item anim anim-d1">
-                    <img src="images/posts/post_DKcfv3YK4Zm.jpg" alt="Post 2" onerror="this.src='images/profile/Logo.jpg'">
-                    <div class="gallery-overlay"><span>@jun.omn</span></div>
-                </div>
-                <div class="gallery-item anim anim-d2">
-                    <img src="images/profile/Logo.jpg" alt="JUN Logo">
-                    <div class="gallery-overlay"><span>الهوية البصرية</span></div>
-                </div>
+            <div class="gal-grid" style="margin-top:60px">
+                <div class="gal-item tilt a"><img src="images/posts/post_DN2o87v2GTL.jpg" alt="Post 1" onerror="this.src='images/profile/Logo.jpg'"><div class="gal-ov"><span>@jun.omn</span></div></div>
+                <div class="gal-item tilt a a1"><img src="images/posts/post_DKcfv3YK4Zm.jpg" alt="Post 2" onerror="this.src='images/profile/Logo.jpg'"><div class="gal-ov"><span>@jun.omn</span></div></div>
+                <div class="gal-item tilt a a2"><img src="images/profile/Logo.jpg" alt="JUN Logo"><div class="gal-ov"><span>الهوية البصرية</span></div></div>
             </div>
         </div>
     </section>
 
     <!-- TESTIMONIALS -->
-    <section class="section">
-        <div class="container">
-            <div class="section-center">
-                <div class="section-label anim">آراء العملاء</div>
-                <h2 class="section-title anim anim-d1">ماذا يقول <span class="gold">عملاؤنا</span></h2>
+    <section class="sec">
+        <div class="ctr">
+            <div class="sec-center">
+                <div class="sec-label a">آراء العملاء</div>
+                <h2 class="sec-title a a1">ماذا يقول <span class="gold">عملاؤنا</span></h2>
             </div>
-            <div class="testi-grid" style="margin-top:64px;">
-                <div class="testi-card anim">
-                    <div class="testi-stars">★★★★★</div>
-                    <p class="testi-text">"منتجات رائعة وفعّالة! بشرتي تحسنت بشكل ملحوظ بعد أسبوعين فقط. أنصح الجميع بتجربة منتجات JUN."</p>
-                    <div class="testi-author">
-                        <div class="testi-avatar">س</div>
-                        <div>
-                            <div class="testi-name">سارة المعمري</div>
-                            <div class="testi-loc">مسقط، عُمان</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testi-card anim anim-d1">
-                    <div class="testi-stars">★★★★★</div>
-                    <p class="testi-text">"أفضل منتجات عناية بالبشرة جربتها! الجودة عالية والأسعار معقولة. التغليف أنيق جداً."</p>
-                    <div class="testi-author">
-                        <div class="testi-avatar">ن</div>
-                        <div>
-                            <div class="testi-name">نورة الراشدي</div>
-                            <div class="testi-loc">صلالة، عُمان</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testi-card anim anim-d2">
-                    <div class="testi-stars">★★★★★</div>
-                    <p class="testi-text">"جهناء حمود شخصية ملهمة! محتواها رائع ومنتجاتها تعكس الذوق الرفيع. أصبحت من أشد المعجبات."</p>
-                    <div class="testi-author">
-                        <div class="testi-avatar">ف</div>
-                        <div>
-                            <div class="testi-name">فاطمة البلوشي</div>
-                            <div class="testi-loc">بهلاء، عُمان</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PRICING -->
-    <section id="pricing" class="section pricing-bg">
-        <div class="container">
-            <div class="section-center">
-                <div class="section-label anim">الباقات</div>
-                <h2 class="section-title anim anim-d1">اختاري <span class="gold">باقة</span> مناسبة</h2>
-                <p class="section-desc anim anim-d2">ثلاث باقات مصممة خصيصاً لتلبية احتياجاتك</p>
-            </div>
-            <div class="pricing-grid" style="margin-top:64px;">
-                <div class="price-card anim">
-                    <div class="price-name">الباقة الأساسية</div>
-                    <div class="price-val">5 <small>OMR</small></div>
-                    <div class="price-period">شهرياً</div>
-                    <ul class="price-list">
-                        <li><span class="price-check">✓</span> منتج عناية أساسي</li>
-                        <li><span class="price-check">✓</span> شحن مجاني داخل مسقط</li>
-                        <li><span class="price-check">✓</span> نصائح عناية يومية</li>
-                        <li><span class="price-check">✓</span> دعم عبر واتساب</li>
-                    </ul>
-                    <a href="https://wa.me/96899166008?text=مرحبًا، أريد الباقة الأساسية" target="_blank" class="price-btn price-btn-outline">ابدئي الآن</a>
-                </div>
-                <div class="price-card featured anim anim-d1">
-                    <div class="price-name">الباقة المميزة</div>
-                    <div class="price-val">12 <small>OMR</small></div>
-                    <div class="price-period">شهرياً</div>
-                    <ul class="price-list">
-                        <li><span class="price-check">✓</span> 3 منتجات عناية متكاملة</li>
-                        <li><span class="price-check">✓</span> شحن مجاني لجميع عُمان</li>
-                        <li><span class="price-check">✓</span> روتين عناية مخصص</li>
-                        <li><span class="price-check">✓</span> استشارة جمالية شهرية</li>
-                        <li><span class="price-check">✓</span> هدايا حصرية</li>
-                    </ul>
-                    <a href="https://wa.me/96899166008?text=مرحبًا، أريد الباقة المميزة" target="_blank" class="price-btn price-btn-gold">الأكثر طلباً</a>
-                </div>
-                <div class="price-card anim anim-d2">
-                    <div class="price-name">الباقة الشاملة</div>
-                    <div class="price-val">25 <small>OMR</small></div>
-                    <div class="price-period">شهرياً</div>
-                    <ul class="price-list">
-                        <li><span class="price-check">✓</span> جميع منتجات العناية</li>
-                        <li><span class="price-check">✓</span> منتجات مكياج حصرية</li>
-                        <li><span class="price-check">✓</span> شحن سريع مجاني</li>
-                        <li><span class="price-check">✓</span> استشارة جمالية أسبوعية</li>
-                        <li><span class="price-check">✓</span> خصم 20% على جميع المنتجات</li>
-                    </ul>
-                    <a href="https://wa.me/96899166008?text=مرحبًا، أريد الباقة الشاملة" target="_blank" class="price-btn price-btn-outline">تواصل معنا</a>
-                </div>
+            <div class="test-grid" style="margin-top:60px">
+                <div class="test-card a"><div class="test-stars">★★★★★</div><p class="test-txt">"منتجات رائعة وفعّالة! بشرتي تحسنت بشكل ملحوظ بعد أسبوعين فقط. أنصح الجميع بتجربة منتجات JUN."</p><div class="test-auth"><div class="test-av">س</div><div><div class="test-nm">سارة المعمري</div><div class="test-loc">مسقط، عُمان</div></div></div></div>
+                <div class="test-card a a1"><div class="test-stars">★★★★★</div><p class="test-txt">"أفضل منتجات عناية بالبشرة جربتها! الجودة عالية والأسعار معقولة. التغليف أنيق جداً."</p><div class="test-auth"><div class="test-av">ن</div><div><div class="test-nm">نورة الراشدي</div><div class="test-loc">صلالة، عُمان</div></div></div></div>
+                <div class="test-card a a2"><div class="test-stars">★★★★★</div><p class="test-txt">"جهناء حمود شخصية ملهمة! محتواها رائع ومنتجاتها تعكس الذوق الرفيع. أصبحت من أشد المعجبات."</p><div class="test-auth"><div class="test-av">ف</div><div><div class="test-nm">فاطمة البلوشي</div><div class="test-loc">بهلاء، عُمان</div></div></div></div>
             </div>
         </div>
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="section">
-        <div class="container">
-            <div class="section-center">
-                <div class="section-label anim">تواصلي معنا</div>
-                <h2 class="section-title anim anim-d1">جاهزات <span class="gold">لمساعدتك</span></h2>
+    <section id="contact" class="sec contact-bg">
+        <div class="ctr">
+            <div class="sec-center">
+                <div class="sec-label a">تواصلي معنا</div>
+                <h2 class="sec-title a a1">جاهزات <span class="gold">لمساعدتك</span></h2>
             </div>
-            <div class="contact-grid" style="margin-top:64px;">
-                <a href="https://wa.me/96899166008" target="_blank" class="contact-card anim">
-                    <div class="contact-icon">💬</div>
-                    <h3>واتساب</h3>
-                    <p>تواصلي معنا مباشرة للطلب والاستفسارات</p>
-                    <span class="contact-link">راسلنا الآن ←</span>
-                </a>
-                <a href="https://www.instagram.com/jun.omn/" target="_blank" class="contact-card anim anim-d1">
-                    <div class="contact-icon">📸</div>
-                    <h3>Instagram</h3>
-                    <p>تابعينا للحصول على أحدث المنتجات والمحتوى</p>
-                    <span class="contact-link">@jun.omn ←</span>
-                </a>
-                <a href="https://www.instagram.com/juhaina.omn/" target="_blank" class="contact-card anim anim-d2">
-                    <div class="contact-icon">🛍️</div>
-                    <h3>حساب الطلبات</h3>
-                    <p>لطلب المنتجات مباشرة</p>
-                    <span class="contact-link">@juhaina.omn ←</span>
-                </a>
-                <a href="https://www.snapchat.com/@juhainahamood" target="_blank" class="contact-card anim anim-d3">
-                    <div class="contact-icon">👻</div>
-                    <h3>Snapchat</h3>
-                    <p>شاهدي يوميات جهناء ومحتوى حصري</p>
-                    <span class="contact-link">@juhainahamood ←</span>
-                </a>
+            <div class="contact-grid" style="margin-top:60px">
+                <a href="https://wa.me/96899166008" target="_blank" class="contact-card a"><div class="contact-ico">💬</div><h3>واتساب</h3><p>تواصلي معنا مباشرة للطلب والاستفسارات</p><span class="contact-link">راسلنا الآن ←</span></a>
+                <a href="https://www.instagram.com/jun.omn/" target="_blank" class="contact-card a a1"><div class="contact-ico">📸</div><h3>Instagram</h3><p>تابعينا للحصول على أحدث المنتجات والمحتوى</p><span class="contact-link">@jun.omn ←</span></a>
+                <a href="https://www.instagram.com/juhaina.omn/" target="_blank" class="contact-card a a2"><div class="contact-ico">🛍️</div><h3>حساب الطلبات</h3><p>لطلب المنتجات مباشرة</p><span class="contact-link">@juhaina.omn ←</span></a>
+                <a href="https://www.snapchat.com/@juhainahamood" target="_blank" class="contact-card a a3"><div class="contact-ico">👻</div><h3>Snapchat</h3><p>شاهدي يوميات جهناء ومحتوى حصري</p><span class="contact-link">@juhainahamood ←</span></a>
             </div>
         </div>
     </section>
@@ -994,12 +459,12 @@
     <!-- CTA -->
     <section class="cta">
         <div class="cta-glow"></div>
-        <div class="container">
-            <div class="cta-content">
-                <h2 class="cta-title anim">مستعدة لاكتشاف<br><span class="gold">جمالك الحقيقي</span>؟</h2>
-                <p class="cta-desc anim anim-d1">ابدئي رحلتك مع JUN اليوم. تواصلي معنا واحصلي على استشارة مجانية.</p>
-                <div class="anim anim-d2">
-                    <a href="https://wa.me/96899166008?text=مرحبًا، أريد معرفة المزيد" target="_blank" class="btn-gold">
+        <div class="ctr">
+            <div style="position:relative;z-index:2">
+                <h2 class="cta-title a">مستعدة لاكتشاف<br><span class="gold">جمالك الحقيقي</span>؟</h2>
+                <p class="cta-desc a a1">ابدئي رحلتك مع JUN اليوم. تواصلي معنا واحصلي على استشارة مجانية.</p>
+                <div class="a a2">
+                    <a href="https://wa.me/96899166008?text=مرحبًا، أريد معرفة المزيد" target="_blank" class="btn-g mag">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                         اطلبي الآن
                     </a>
@@ -1010,13 +475,10 @@
 
     <!-- FOOTER -->
     <footer class="footer">
-        <div class="container">
+        <div class="ctr">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <a href="#home" class="nav-brand">
-                        <img src="images/profile/Logo.jpg" alt="JUN" style="width:36px;height:36px;border-radius:10px;">
-                        <span>JUN</span>
-                    </a>
+                    <a href="#home" class="nav-brand"><img src="images/profile/Logo.jpg" alt="JUN" style="width:34px;height:34px;border-radius:9px"><span>JUN</span></a>
                     <p>علامة جمالية ونمط حياة فاخرة من مسقط، عُمان. بواسطة جهناء حمود.</p>
                     <div class="footer-social">
                         <a href="https://www.instagram.com/jun.omn/" target="_blank">📸</a>
@@ -1024,25 +486,9 @@
                         <a href="https://www.snapchat.com/@juhainahamood" target="_blank">👻</a>
                     </div>
                 </div>
-                <div class="footer-col">
-                    <h4>روابط</h4>
-                    <a href="#home">الرئيسية</a>
-                    <a href="#about">من نحن</a>
-                    <a href="#features">المميزات</a>
-                    <a href="#gallery">المعرض</a>
-                </div>
-                <div class="footer-col">
-                    <h4>الخدمات</h4>
-                    <a href="#features">العناية بالبشرة</a>
-                    <a href="#features">المكياج</a>
-                    <a href="#pricing">الباقات</a>
-                </div>
-                <div class="footer-col">
-                    <h4>تواصلي</h4>
-                    <a href="https://wa.me/96899166008" target="_blank">واتساب</a>
-                    <a href="https://www.instagram.com/jun.omn/" target="_blank">Instagram</a>
-                    <a href="https://www.instagram.com/juhaina.omn/" target="_blank">حساب الطلبات</a>
-                </div>
+                <div class="footer-col"><h4>روابط</h4><a href="#home">الرئيسية</a><a href="#about">من نحن</a><a href="#features">المميزات</a><a href="#gallery">المعرض</a></div>
+                <div class="footer-col"><h4>الخدمات</h4><a href="#features">العناية بالبشرة</a><a href="#features">المكياج</a><a href="#features">نمط الحياة</a></div>
+                <div class="footer-col"><h4>تواصلي</h4><a href="https://wa.me/96899166008" target="_blank">واتساب</a><a href="https://www.instagram.com/jun.omn/" target="_blank">Instagram</a><a href="https://www.instagram.com/juhaina.omn/" target="_blank">حساب الطلبات</a></div>
             </div>
             <div class="footer-bottom">
                 <p>© 2026 JUN (@jun.omn). جميع الحقوق محفوظة.</p>
@@ -1052,73 +498,101 @@
     </footer>
 
     <script>
-        // Loader
-        window.addEventListener('load', () => {
-            setTimeout(() => document.getElementById('loader').classList.add('hide'), 600);
+    // Loader
+    window.addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('hide'),500));
+
+    // Theme
+    function toggleTheme(){
+        const h=document.documentElement,b=document.getElementById('themeBtn');
+        const d=h.getAttribute('data-theme')==='dark';
+        h.setAttribute('data-theme',d?'light':'dark');
+        b.textContent=d?'☀️':'🌙';
+    }
+
+    // Custom Cursor
+    const cur=document.getElementById('cursor');
+    let mx=0,my=0,cx=0,cy=0;
+    document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
+    function animCursor(){
+        cx+=(mx-cx)*.15;cy+=(my-cy)*.15;
+        cur.style.left=cx+'px';cur.style.top=cy+'px';
+        requestAnimationFrame(animCursor);
+    }
+    animCursor();
+
+    // Cursor hover
+    document.querySelectorAll('a,button,.feat-card,.gal-item,.test-card,.contact-card,.btn-g,.btn-o,.mag').forEach(el=>{
+        el.addEventListener('mouseenter',()=>cur.classList.add('hover'));
+        el.addEventListener('mouseleave',()=>cur.classList.remove('hover'));
+    });
+
+    // Magnetic pull effect
+    document.querySelectorAll('.mag').forEach(el=>{
+        el.addEventListener('mousemove',e=>{
+            const r=el.getBoundingClientRect();
+            const x=e.clientX-r.left-r.width/2;
+            const y=e.clientY-r.top-r.height/2;
+            el.style.transform=`translate(${x*.2}px,${y*.2}px)`;
         });
+        el.addEventListener('mouseleave',()=>{el.style.transform=''});
+    });
 
-        // Theme
-        function toggleTheme() {
-            const html = document.documentElement;
-            const btn = document.getElementById('themeToggle');
-            const isDark = html.getAttribute('data-theme') === 'dark';
-            html.setAttribute('data-theme', isDark ? 'light' : 'dark');
-            btn.textContent = isDark ? '☀️' : '🌙';
-        }
-
-        // Scroll Anim
-        const io = new IntersectionObserver(entries => {
-            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); });
-        }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
-        document.querySelectorAll('.anim').forEach(el => io.observe(el));
-
-        // Nav scroll
-        window.addEventListener('scroll', () => {
-            document.getElementById('nav').classList.toggle('scrolled', scrollY > 50);
+    // 3D Tilt on mouse
+    document.querySelectorAll('.tilt').forEach(card=>{
+        card.addEventListener('mousemove',e=>{
+            const r=card.getBoundingClientRect();
+            const x=e.clientX-r.left;const y=e.clientY-r.top;
+            const cx=r.width/2;const cy=r.height/2;
+            const rx=(y-cy)/cy*-8;const ry=(x-cx)/cx*8;
+            card.style.transform=`perspective(800px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(10px) scale(1.02)`;
         });
+        card.addEventListener('mouseleave',()=>{card.style.transform=''});
+    });
 
-        // Mobile
-        function toggleMob() {
-            document.getElementById('mobileOverlay').classList.toggle('active');
-            document.getElementById('mobBtn').classList.toggle('active');
+    // Scroll Reveal
+    const io=new IntersectionObserver(entries=>{
+        entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')});
+    },{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+    document.querySelectorAll('.a').forEach(el=>io.observe(el));
+
+    // Nav scroll
+    window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('sc',scrollY>50)});
+
+    // Mobile
+    function toggleMob(){document.getElementById('mobOv').classList.toggle('act');document.getElementById('mobBtn').classList.toggle('act')}
+    function closeMob(){document.getElementById('mobOv').classList.remove('act');document.getElementById('mobBtn').classList.remove('act')}
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+        a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})});
+    });
+
+    // Parallax on scroll for hero grid
+    window.addEventListener('scroll',()=>{
+        const g=document.querySelector('.hero-grid');
+        if(g){const s=window.scrollY;g.style.transform=`perspective(500px) rotateX(60deg) translateY(${s*.15}px)`}
+    });
+
+    // 3D showcase logo rotation on scroll
+    window.addEventListener('scroll',()=>{
+        const l=document.querySelector('.show-logo');
+        if(l){const r=l.getBoundingClientRect();const vh=window.innerHeight;
+            if(r.top<vh&&r.bottom>0){
+                const p=(vh-r.top)/(vh+r.height);
+                const ry=(p-.5)*30;
+                l.style.transform=`rotateY(${ry}deg) scale(${.9+p*.2})`;
+            }
         }
-        function closeMob() {
-            document.getElementById('mobileOverlay').classList.remove('active');
-            document.getElementById('mobBtn').classList.remove('active');
-        }
+    });
 
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(a => {
-            a.addEventListener('click', e => {
-                e.preventDefault();
-                const t = document.querySelector(a.getAttribute('href'));
-                if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            });
-        });
-
-        // 3D tilt on mouse
-        document.querySelectorAll('.feat-card, .gallery-item, .testi-card, .price-card').forEach(card => {
-            card.addEventListener('mousemove', e => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const cx = rect.width / 2;
-                const cy = rect.height / 2;
-                const rx = (y - cy) / cy * -6;
-                const ry = (x - cx) / cx * 6;
-                card.style.transform = `perspective(800px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-8px)`;
-            });
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = '';
-            });
-        });
-
-        // Reduced motion
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            const s = document.createElement('style');
-            s.textContent = '*{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}';
-            document.head.appendChild(s);
-        }
+    // Reduced motion
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+        const s=document.createElement('style');
+        s.textContent='*{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}';
+        document.head.appendChild(s);
+        cur.style.display='none';
+        document.querySelector('.cursor-dot').style.display='none';
+    }
     </script>
 </body>
 </html>
