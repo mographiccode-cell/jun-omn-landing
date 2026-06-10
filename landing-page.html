@@ -1,598 +1,541 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JUN | @jun.omn</title>
-    <meta name="description" content="JUN - علامة جمالية فاخرة من مسقط، عُمان.">
-    <meta property="og:image" content="images/profile/Logo.jpg">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-        :root{
-            --navy:#3D4F5F;--navy-d:#2C3E4A;--navy-dd:#1E2D38;
-            --gold:#C9A96E;--gold-l:#D4B896;--gold-p:#E8D5B5;--gold-dim:rgba(201,169,110,0.12);
-            --cream:#F5F0E8;--white:#FFF;
-            --font:'Cairo',-apple-system,BlinkMacSystemFont,sans-serif;
-        }
-        [data-theme="dark"]{
-            --bg:#080B10;--bg2:#0E1219;--bg3:#141A24;
-            --surface:rgba(61,79,95,0.18);--surface-h:rgba(61,79,95,0.32);
-            --border:rgba(201,169,110,0.1);--border-h:rgba(201,169,110,0.28);
-            --tx:#EDE8DF;--tx2:rgba(237,232,223,0.55);--tx3:rgba(237,232,223,0.3);
-        }
-        [data-theme="light"]{
-            --bg:#F5F0E8;--bg2:#FFF;--bg3:#FAF7F2;
-            --surface:rgba(61,79,95,0.05);--surface-h:rgba(61,79,95,0.09);
-            --border:rgba(61,79,95,0.08);--border-h:rgba(61,79,95,0.2);
-            --tx:#2C3E4A;--tx2:rgba(44,62,74,0.55);--tx3:rgba(44,62,74,0.3);
-        }
-        html{scroll-behavior:smooth}
-        body{font-family:var(--font);background:var(--bg);color:var(--tx);overflow-x:hidden;-webkit-font-smoothing:antialiased;cursor:none}
-        ::-webkit-scrollbar{width:4px}
-        ::-webkit-scrollbar-track{background:transparent}
-        ::-webkit-scrollbar-thumb{background:var(--gold);border-radius:2px}
-        .ctr{max-width:1100px;margin:0 auto;padding:0 24px}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JUN | @jun.omn</title>
+<meta property="og:image" content="images/profile/Logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+--navy:#3D4F5F;--navy-d:#2C3E4A;--navy-dd:#1E2D38;
+--gold:#C9A96E;--gold-l:#D4B896;--gold-p:#E8D5B5;
+--gold-dim:rgba(201,169,110,.12);
+--font:'Cairo',sans-serif;
+}
+[data-theme="dark"]{--bg:#060810;--bg2:#0C0F18;--sf:rgba(201,169,110,.06);--bd:rgba(201,169,110,.1);--bd2:rgba(201,169,110,.25);--tx:#EDE8DF;--tx2:rgba(237,232,223,.5);--tx3:rgba(237,232,223,.25)}
+[data-theme="light"]{--bg:#F5F0E8;--bg2:#FFF;--sf:rgba(61,79,95,.04);--bd:rgba(61,79,95,.08);--bd2:rgba(61,79,95,.2);--tx:#2C3E4A;--tx2:rgba(44,62,74,.5);--tx3:rgba(44,62,74,.25)}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg);color:var(--tx);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::selection{background:var(--gold);color:var(--navy-d)}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:2px}
+.ctr{max-width:1080px;margin:0 auto;padding:0 24px}
 
-        /* ===== CUSTOM CURSOR ===== */
-        .cursor{position:fixed;width:20px;height:20px;border:2px solid var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transition:width .3s,height .3s,border-color .3s,transform .15s ease-out;transform:translate(-50%,-50%);mix-blend-mode:difference}
-        .cursor-dot{position:fixed;width:5px;height:5px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .08s ease-out}
-        .cursor.hover{width:50px;height:50px;border-color:var(--gold-l)}
-        .cursor.hover .cursor-dot{transform:translate(-50%,-50%) scale(0)}
+/* ===== GRAIN OVERLAY ===== */
+.grain{position:fixed;inset:0;z-index:9998;pointer-events:none;opacity:.035;mix-blend-mode:overlay}
+.grain canvas{width:100%;height:100%}
 
-        /* ===== THEME TOGGLE ===== */
-        .theme-btn{position:fixed;bottom:28px;left:28px;z-index:200;width:48px;height:48px;border-radius:50%;background:var(--surface);border:1px solid var(--border);backdrop-filter:blur(20px);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.2rem;transition:all .4s;box-shadow:0 8px 32px rgba(0,0,0,.2)}
-        .theme-btn:hover{transform:scale(1.15) rotate(20deg);border-color:var(--gold)}
+/* ===== CURSOR ===== */
+.cur{position:fixed;width:16px;height:16px;border:1.5px solid var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transition:width .4s cubic-bezier(.4,0,.2,1),height .4s cubic-bezier(.4,0,.2,1),border-color .3s,opacity .3s;transform:translate(-50%,-50%);opacity:.7}
+.cur-dot{position:fixed;width:4px;height:4px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+.cur.expanded{width:60px;height:60px;border-color:var(--gold-l);opacity:.4}
+@media(max-width:768px){.cur,.cur-dot{display:none}}
 
-        /* ===== NAV ===== */
-        .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;transition:all .5s}
-        .nav.sc{padding:12px 0;background:rgba(8,11,16,.75);backdrop-filter:blur(40px) saturate(180%);border-bottom:1px solid var(--border)}
-        [data-theme="light"] .nav.sc{background:rgba(245,240,232,.8)}
-        .nav .ctr{display:flex;justify-content:space-between;align-items:center}
-        .nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
-        .nav-brand img{width:34px;height:34px;border-radius:9px;object-fit:cover}
-        .nav-brand span{font-size:1.1rem;font-weight:800;color:var(--tx)}
-        .nav-links{display:flex;gap:32px;list-style:none}
-        .nav-links a{color:var(--tx2);text-decoration:none;font-size:.85rem;font-weight:500;transition:color .3s}
-        .nav-links a:hover{color:var(--gold)}
-        .nav-cta{padding:9px 22px;background:var(--gold);color:var(--navy-d);border:none;border-radius:999px;font-size:.82rem;font-weight:700;cursor:pointer;text-decoration:none;transition:all .3s;font-family:var(--font)}
-        .nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(201,169,110,.3)}
-        .mob-btn{display:none;background:none;border:none;cursor:pointer;width:34px;height:34px;position:relative}
-        .mob-btn span{display:block;width:20px;height:1.5px;background:var(--tx);position:absolute;left:7px;transition:all .3s}
-        .mob-btn span:nth-child(1){top:11px}.mob-btn span:nth-child(2){top:17px}.mob-btn span:nth-child(3){top:23px}
-        .mob-btn.act span:nth-child(1){top:17px;transform:rotate(45deg)}
-        .mob-btn.act span:nth-child(2){opacity:0}
-        .mob-btn.act span:nth-child(3){top:17px;transform:rotate(-45deg)}
-        .mob-ov{display:none;position:fixed;inset:0;z-index:99;background:var(--bg);flex-direction:column;align-items:center;justify-content:center;gap:24px}
-        .mob-ov.act{display:flex}
-        .mob-ov a{color:var(--tx);text-decoration:none;font-size:1.5rem;font-weight:700;opacity:0;transform:translateY(20px);transition:all .4s}
-        .mob-ov.act a{opacity:1;transform:translateY(0)}
-        .mob-ov.act a:nth-child(1){transition-delay:.05s}.mob-ov.act a:nth-child(2){transition-delay:.1s}
-        .mob-ov.act a:nth-child(3){transition-delay:.15s}.mob-ov.act a:nth-child(4){transition-delay:.2s}
-        .mob-ov.act a:nth-child(5){transition-delay:.25s}
+/* ===== THEME ===== */
+.theme{position:fixed;bottom:24px;left:24px;z-index:200;width:44px;height:44px;border-radius:50%;background:var(--sf);border:1px solid var(--bd);backdrop-filter:blur(20px);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.1rem;transition:all .4s cubic-bezier(.4,0,.2,1)}
+.theme:hover{transform:scale(1.15) rotate(20deg);border-color:var(--gold)}
 
-        /* ===== 3D SCENE ===== */
-        .scene{perspective:1200px}
-        .t3d{transform-style:preserve-3d;transition:transform .7s cubic-bezier(.4,0,.2,1)}
+/* ===== NAV ===== */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;transition:all .5s cubic-bezier(.4,0,.2,1)}
+.nav.sc{padding:12px 0;background:rgba(6,8,16,.8);backdrop-filter:blur(40px) saturate(200%);border-bottom:1px solid var(--bd)}
+[data-theme="light"] .nav.sc{background:rgba(245,240,232,.85)}
+.nav .ctr{display:flex;justify-content:space-between;align-items:center}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-brand img{width:32px;height:32px;border-radius:8px;object-fit:cover}
+.nav-brand span{font-size:1.05rem;font-weight:800;color:var(--tx)}
+.nav-links{display:flex;gap:30px;list-style:none}
+.nav-links a{color:var(--tx2);text-decoration:none;font-size:.82rem;font-weight:500;transition:color .3s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;right:0;width:0;height:1px;background:var(--gold);transition:width .3s}
+.nav-links a:hover{color:var(--tx)}.nav-links a:hover::after{width:100%}
+.nav-cta{padding:8px 20px;background:var(--gold);color:var(--navy-d);border:none;border-radius:999px;font-size:.8rem;font-weight:700;cursor:pointer;text-decoration:none;transition:all .3s;font-family:var(--font)}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(201,169,110,.3)}
+.mob-tog{display:none;background:none;border:none;cursor:pointer;width:32px;height:32px;position:relative}
+.mob-tog span{display:block;width:18px;height:1px;background:var(--tx);position:absolute;left:7px;transition:all .3s}
+.mob-tog span:nth-child(1){top:10px}.mob-tog span:nth-child(2){top:15px}.mob-tog span:nth-child(3){top:20px}
+.mob-tog.on span:nth-child(1){top:15px;transform:rotate(45deg)}.mob-tog.on span:nth-child(2){opacity:0}.mob-tog.on span:nth-child(3){top:15px;transform:rotate(-45deg)}
+.mob-ov{display:none;position:fixed;inset:0;z-index:99;background:var(--bg);flex-direction:column;align-items:center;justify-content:center;gap:22px}
+.mob-ov.on{display:flex}
+.mob-ov a{color:var(--tx);text-decoration:none;font-size:1.4rem;font-weight:700;opacity:0;transform:translateY(20px) rotateX(-20deg);transition:all .5s cubic-bezier(.4,0,.2,1)}
+.mob-ov.on a{opacity:1;transform:translateY(0) rotateX(0)}
+.mob-ov.on a:nth-child(1){transition-delay:.05s}.mob-ov.on a:nth-child(2){transition-delay:.1s}.mob-ov.on a:nth-child(3){transition-delay:.15s}.mob-ov.on a:nth-child(4){transition-delay:.2s}.mob-ov.on a:nth-child(5){transition-delay:.25s}
+@media(max-width:768px){.nav-links,.nav-cta{display:none}.mob-tog{display:block}}
 
-        /* ===== HERO ===== */
-        .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-        .hero-orbs{position:absolute;inset:0;overflow:hidden}
-        .hero-orb{position:absolute;border-radius:50%;filter:blur(140px);opacity:.35}
-        .hero-orb.a{width:800px;height:800px;background:var(--gold-dim);top:-350px;right:-250px;animation:orbA 30s ease-in-out infinite}
-        .hero-orb.b{width:600px;height:600px;background:rgba(61,79,95,.15);bottom:-250px;left:-200px;animation:orbA 30s ease-in-out infinite reverse}
-        .hero-orb.c{width:400px;height:400px;background:var(--gold-dim);top:50%;left:40%;animation:orbA 25s ease-in-out infinite 5s;opacity:.2}
-        @keyframes orbA{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(50px,-30px) scale(1.08)}66%{transform:translate(-30px,40px) scale(.92)}}
+/* ===== HERO ===== */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:120px 0 80px}
+.hero-mesh{position:absolute;inset:0;overflow:hidden}
+.hero-blob{position:absolute;border-radius:40% 60% 70% 30% / 40% 50% 60% 50%;filter:blur(100px);opacity:.3;animation:morph 20s ease-in-out infinite alternate}
+.hero-blob.b1{width:600px;height:600px;background:var(--gold-dim);top:-200px;right:-100px}
+.hero-blob.b2{width:500px;height:500px;background:rgba(61,79,95,.15);bottom:-150px;left:-100px;animation-delay:-7s;animation-direction:alternate-reverse}
+.hero-blob.b3{width:350px;height:350px;background:var(--gold-dim);top:40%;left:45%;animation-delay:-14s;opacity:.2}
+@keyframes morph{0%{border-radius:40% 60% 70% 30% / 40% 50% 60% 50%;transform:rotate(0deg) scale(1)}33%{border-radius:70% 30% 50% 50% / 30% 30% 70% 70%;transform:rotate(60deg) scale(1.05)}66%{border-radius:50% 50% 30% 70% / 50% 70% 30% 50%;transform:rotate(120deg) scale(.95)}100%{border-radius:30% 70% 50% 50% / 70% 40% 60% 30%;transform:rotate(180deg) scale(1.02)}}
 
-        /* Perspective Grid */
-        .hero-grid{position:absolute;bottom:0;left:0;right:0;height:60%;background-image:linear-gradient(var(--gold-dim) 1px,transparent 1px),linear-gradient(90deg,var(--gold-dim) 1px,transparent 1px);background-size:80px 80px;transform:perspective(500px) rotateX(60deg);transform-origin:bottom;mask-image:linear-gradient(to top,black 20%,transparent 70%);-webkit-mask-image:linear-gradient(to top,black 20%,transparent 70%);opacity:.4}
+.hero-content{position:relative;z-index:2;text-align:center;max-width:820px;padding:0 24px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:7px 18px;border-radius:999px;background:var(--sf);border:1px solid var(--bd);font-size:.78rem;color:var(--gold);font-weight:600;margin-bottom:28px;backdrop-filter:blur(10px)}
+.hero-badge-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(2)}}
 
-        .hero-content{position:relative;z-index:2;text-align:center;max-width:850px;padding:0 24px}
-        .hero-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;border-radius:999px;background:var(--surface);border:1px solid var(--border);font-size:.8rem;color:var(--gold);font-weight:600;margin-bottom:28px;backdrop-filter:blur(10px)}
-        .hero-badge-dot{width:7px;height:7px;background:var(--gold);border-radius:50%;animation:pulse 2s ease-in-out infinite}
-        @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.8)}}
+.hero-title{font-size:clamp(2.8rem,7.5vw,6.5rem);font-weight:900;line-height:1.05;margin-bottom:22px;letter-spacing:-2px}
+.hero-title .char{display:inline-block;opacity:0;transform:translateY(80px) rotateX(-60deg);animation:charIn .8s cubic-bezier(.4,0,.2,1) forwards}
+.hero-title .gold{color:var(--gold)}
+.hero-title .line2 .char{animation-delay:.6s}
 
-        /* 3D Text Reveal */
-        .hero-title{font-size:clamp(3rem,8vw,7rem);font-weight:900;line-height:1.02;margin-bottom:24px;letter-spacing:-3px}
-        .hero-title .line{display:block;overflow:hidden}
-        .hero-title .line span{display:inline-block;transform:translateY(110%) rotateX(-80deg);transform-origin:bottom;animation:txtReveal .9s cubic-bezier(.4,0,.2,1) forwards}
-        .hero-title .line:nth-child(2) span{animation-delay:.15s}
-        .hero-title .gold{color:var(--gold)}
-        @keyframes txtReveal{to{transform:translateY(0) rotateX(0)}}
+@keyframes charIn{to{opacity:1;transform:translateY(0) rotateX(0)}}
 
-        .hero-sub{font-size:clamp(1rem,2vw,1.2rem);color:var(--tx2);max-width:520px;margin:0 auto 44px;line-height:1.9}
-        .hero-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-        .btn-g{display:inline-flex;align-items:center;gap:10px;padding:16px 36px;background:var(--gold);color:var(--navy-d);border:none;border-radius:999px;font-size:.95rem;font-weight:700;cursor:pointer;text-decoration:none;font-family:var(--font);transition:all .4s cubic-bezier(.4,0,.2,1);box-shadow:0 4px 24px rgba(201,169,110,.2);position:relative;overflow:hidden}
-        .btn-g::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.3) 0%,transparent 60%);opacity:0;transition:opacity .3s}
-        .btn-g:hover::after{opacity:1}
-        .btn-g:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 12px 40px rgba(201,169,110,.4)}
-        .btn-o{display:inline-flex;align-items:center;gap:10px;padding:16px 36px;background:transparent;color:var(--tx);border:1px solid var(--border);border-radius:999px;font-size:.95rem;font-weight:600;cursor:pointer;text-decoration:none;font-family:var(--font);transition:all .3s;backdrop-filter:blur(10px)}
-        .btn-o:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
+.hero-sub{font-size:clamp(.95rem,1.8vw,1.15rem);color:var(--tx2);max-width:500px;margin:0 auto 40px;line-height:1.9;opacity:0;transform:translateY(20px);animation:fadeUp .8s 1.2s cubic-bezier(.4,0,.2,1) forwards}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
 
-        .hero-stats{display:flex;justify-content:center;gap:56px;margin-top:72px;padding-top:40px;border-top:1px solid var(--border)}
-        .hero-stat-val{font-size:2.2rem;font-weight:900;color:var(--gold);letter-spacing:-1px}
-        .hero-stat-lbl{font-size:.78rem;color:var(--tx3);margin-top:2px}
+.hero-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;opacity:0;animation:fadeUp .8s 1.4s cubic-bezier(.4,0,.2,1) forwards}
+.btn-g{display:inline-flex;align-items:center;gap:10px;padding:15px 34px;background:var(--gold);color:var(--navy-d);border:none;border-radius:999px;font-size:.92rem;font-weight:700;cursor:pointer;text-decoration:none;font-family:var(--font);transition:all .4s cubic-bezier(.4,0,.2,1);box-shadow:0 4px 20px rgba(201,169,110,.2);position:relative;overflow:hidden}
+.btn-g::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.3) 0%,transparent 60%);opacity:0;transition:opacity .3s}
+.btn-g:hover::after{opacity:1}
+.btn-g:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 12px 36px rgba(201,169,110,.4)}
+.btn-o{display:inline-flex;align-items:center;gap:10px;padding:15px 34px;background:transparent;color:var(--tx);border:1px solid var(--bd);border-radius:999px;font-size:.92rem;font-weight:600;cursor:pointer;text-decoration:none;font-family:var(--font);transition:all .3s;backdrop-filter:blur(10px)}
+.btn-o:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
 
-        .hero-scroll{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--tx3);font-size:.7rem;letter-spacing:3px}
-        .hero-scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollL 2s ease-in-out infinite}
-        @keyframes scrollL{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.hero-stats{display:flex;justify-content:center;gap:52px;margin-top:68px;padding-top:36px;border-top:1px solid var(--bd);opacity:0;animation:fadeUp .8s 1.6s cubic-bezier(.4,0,.2,1) forwards}
+.hero-sv{font-size:2rem;font-weight:900;color:var(--gold);letter-spacing:-1px}
+.hero-sl{font-size:.75rem;color:var(--tx3);margin-top:2px}
 
-        /* ===== SECTION ===== */
-        .sec{padding:140px 0;position:relative}
-        .sec-label{display:inline-block;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:4px;color:var(--gold);margin-bottom:14px}
-        .sec-title{font-size:clamp(2rem,5vw,3.6rem);font-weight:900;line-height:1.15;letter-spacing:-1.5px;margin-bottom:18px}
-        .sec-desc{font-size:1.05rem;color:var(--tx2);max-width:540px;line-height:1.9}
-        .sec-center{text-align:center}.sec-center .sec-desc{margin:0 auto}
+.hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--tx3);font-size:.65rem;letter-spacing:3px;text-transform:uppercase}
+.hero-scroll-line{width:1px;height:36px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollL 2s ease-in-out infinite}
+@keyframes scrollL{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 
-        /* ===== ABOUT ===== */
-        .about-bg{background:var(--bg2)}
-        .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
-        .about-vis{position:relative}
-        .about-card{width:100%;aspect-ratio:3/4;border-radius:24px;overflow:hidden;border:1px solid var(--border);position:relative;transform:rotateY(-6deg) rotateX(4deg);transition:transform .8s cubic-bezier(.4,0,.2,1);box-shadow:24px 24px 60px rgba(0,0,0,.3)}
-        .about-card:hover{transform:rotateY(0) rotateX(0)}
-        .about-card img{width:100%;height:100%;object-fit:cover}
-        .about-float{position:absolute;bottom:-20px;right:-20px;background:var(--surface);backdrop-filter:blur(20px);border:1px solid var(--border);border-radius:16px;padding:18px 22px;display:flex;align-items:center;gap:12px;animation:flC 5s ease-in-out infinite;box-shadow:0 12px 40px rgba(0,0,0,.2)}
-        @keyframes flC{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-        .about-float-ico{width:44px;height:44px;background:var(--gold);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2rem}
-        .about-float-txt span{display:block;font-size:.72rem;color:var(--tx3)}
-        .about-float-txt strong{font-size:1rem;color:var(--tx)}
+/* ===== SECTION ===== */
+.sec{padding:130px 0;position:relative}
+.sec-label{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:4px;color:var(--gold);margin-bottom:12px}
+.sec-title{font-size:clamp(1.8rem,4.5vw,3.2rem);font-weight:900;line-height:1.15;letter-spacing:-1px;margin-bottom:16px}
+.sec-desc{font-size:1rem;color:var(--tx2);max-width:520px;line-height:1.9}
+.sec-center{text-align:center}.sec-center .sec-desc{margin:0 auto}
 
-        .about-txt{color:var(--tx2);line-height:2;margin-bottom:32px;font-size:1.02rem}
-        .about-feats{display:flex;flex-direction:column;gap:12px}
-        .about-ft{display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--surface);border:1px solid var(--border);border-radius:12px;transition:all .4s}
-        .about-ft:hover{border-color:var(--gold);transform:translateX(6px)}
-        .about-ft-ico{width:38px;height:38px;background:var(--gold-dim);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0}
-        .about-ft span{font-size:.92rem;color:var(--tx2)}
+/* ===== SCROLL REVEAL SYSTEM ===== */
+.sr{opacity:0;transition:all 1s cubic-bezier(.4,0,.2,1)}
+.sr.vis{opacity:1}
+.sr-up{transform:translateY(60px)}.sr-up.vis{transform:translateY(0)}
+.sr-left{transform:translateX(60px) skewX(-3deg)}.sr-left.vis{transform:translateX(0) skewX(0)}
+.sr-right{transform:translateX(-60px) skewX(3deg)}.sr-right.vis{transform:translateX(0) skewX(0)}
+.sr-scale{transform:scale(.85);opacity:0}.sr-scale.vis{transform:scale(1);opacity:1}
+.sr-rotate{transform:perspective(800px) rotateY(15deg);opacity:0}.sr-rotate.vis{transform:perspective(800px) rotateY(0);opacity:1}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}
 
-        /* ===== FEATURES ===== */
-        .feat-bg{background:var(--bg2)}
-        .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-        .feat-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:36px 26px;transition:all .5s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden;transform-style:preserve-3d}
-        .feat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .4s}
-        .feat-card:hover::before{opacity:1}
-        .feat-card:hover{border-color:var(--border-h);box-shadow:0 24px 64px rgba(0,0,0,.25)}
-        .feat-ico{width:52px;height:52px;background:var(--gold-dim);border:1px solid var(--border);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:20px;transition:all .4s}
-        .feat-card:hover .feat-ico{background:var(--gold);transform:translateZ(20px) scale(1.1)}
-        .feat-t{font-size:1.1rem;font-weight:700;margin-bottom:8px}
-        .feat-d{color:var(--tx2);font-size:.9rem;line-height:1.8}
+/* ===== MARQUEE ===== */
+.marquee{overflow:hidden;padding:40px 0;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd)}
+.marquee-track{display:flex;gap:60px;animation:marquee 25s linear infinite;width:max-content}
+.marquee-track span{font-size:1.1rem;font-weight:700;color:var(--tx3);white-space:nowrap;letter-spacing:2px;text-transform:uppercase}
+.marquee-track .dot{color:var(--gold);font-size:1.4rem}
+@keyframes marquee{to{transform:translateX(-50%)}}
 
-        /* ===== SHOWCASE 3D ===== */
-        .show{padding:160px 0;overflow:hidden}
-        .show-stage{display:flex;align-items:center;gap:72px}
-        .show-vis{flex:1;position:relative;display:flex;align-items:center;justify-content:center;min-height:400px}
-        .show-ring{position:absolute;border:1px solid var(--border);border-radius:50%;animation:spin 20s linear infinite}
-        .show-ring.r1{width:300px;height:300px}
-        .show-ring.r2{width:380px;height:380px;animation-duration:30s;animation-direction:reverse;opacity:.5}
-        .show-ring.r3{width:460px;height:460px;animation-duration:40s;opacity:.3}
-        @keyframes spin{to{transform:rotate(360deg)}}
-        .show-logo{width:180px;height:180px;border-radius:50%;object-fit:cover;border:2px solid var(--border);position:relative;z-index:2;box-shadow:0 0 80px rgba(201,169,110,.15);transition:all .6s}
-        .show-logo:hover{transform:scale(1.08);box-shadow:0 0 100px rgba(201,169,110,.25)}
+/* ===== ABOUT ===== */
+.about-bg{background:var(--bg2)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.about-vis{position:relative}
+.about-img{width:100%;aspect-ratio:3/4;border-radius:20px;overflow:hidden;border:1px solid var(--bd);position:relative;transform:rotateY(-5deg) rotateX(3deg);transition:transform .8s cubic-bezier(.4,0,.2,1);box-shadow:20px 20px 60px rgba(0,0,0,.25)}
+.about-img:hover{transform:rotateY(0) rotateX(0)}
+.about-img img{width:100%;height:100%;object-fit:cover}
+.about-badge{position:absolute;bottom:-16px;right:-16px;background:var(--sf);backdrop-filter:blur(20px);border:1px solid var(--bd);border-radius:14px;padding:16px 20px;display:flex;align-items:center;gap:10px;animation:floatB 5s ease-in-out infinite;box-shadow:0 8px 32px rgba(0,0,0,.2)}
+@keyframes floatB{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.about-badge-ico{width:40px;height:40px;background:var(--gold);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+.about-badge-txt span{display:block;font-size:.7rem;color:var(--tx3)}.about-badge-txt strong{font-size:.95rem;color:var(--tx)}
+.about-txt{color:var(--tx2);line-height:2;margin-bottom:28px;font-size:1rem}
+.about-feats{display:flex;flex-direction:column;gap:10px}
+.about-ft{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--sf);border:1px solid var(--bd);border-radius:10px;transition:all .4s}
+.about-ft:hover{border-color:var(--gold);transform:translateX(6px)}
+.about-ft-ico{width:34px;height:34px;background:var(--gold-dim);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0}
+.about-ft span{font-size:.88rem;color:var(--tx2)}
+@media(max-width:768px){.about-grid{grid-template-columns:1fr;gap:36px}.about-img{transform:none;max-width:320px;margin:0 auto}}
 
-        .show-info{flex:1}
-        .show-txt{color:var(--tx2);line-height:1.9;margin-bottom:32px;font-size:1.02rem}
-        .show-stats{display:flex;gap:40px;margin-bottom:36px}
-        .show-sv{font-size:2rem;font-weight:900;color:var(--gold);letter-spacing:-1px}
-        .show-sl{font-size:.78rem;color:var(--tx3);margin-top:2px}
+/* ===== FEATURES ===== */
+.feat-bg{background:var(--bg2)}
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.feat-card{background:var(--sf);border:1px solid var(--bd);border-radius:16px;padding:32px 24px;transition:all .5s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden}
+.feat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .4s}
+.feat-card:hover::before{opacity:1}
+.feat-card:hover{border-color:var(--bd2);transform:translateY(-8px);box-shadow:0 20px 50px rgba(0,0,0,.2)}
+.feat-ico{width:48px;height:48px;background:var(--gold-dim);border:1px solid var(--bd);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:18px;transition:all .4s}
+.feat-card:hover .feat-ico{background:var(--gold);transform:scale(1.1) rotate(-5deg)}
+.feat-t{font-size:1.05rem;font-weight:700;margin-bottom:6px}
+.feat-d{color:var(--tx2);font-size:.88rem;line-height:1.8}
+@media(max-width:1024px){.feat-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){.feat-grid{grid-template-columns:1fr}}
 
-        /* ===== GALLERY ===== */
-        .gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-        .gal-item{border-radius:20px;overflow:hidden;position:relative;border:1px solid var(--border);transition:all .5s cubic-bezier(.4,0,.2,1);transform-style:preserve-3d}
-        .gal-item:hover{box-shadow:0 24px 64px rgba(0,0,0,.25)}
-        .gal-item img{width:100%;aspect-ratio:1;object-fit:cover;transition:transform .7s cubic-bezier(.4,0,.2,1)}
-        .gal-item:hover img{transform:scale(1.06)}
-        .gal-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,11,16,.85) 0%,transparent 50%);display:flex;align-items:flex-end;padding:22px;opacity:0;transition:opacity .4s}
-        .gal-item:hover .gal-ov{opacity:1}
-        .gal-ov span{color:var(--gold);font-weight:600;font-size:.88rem}
+/* ===== SHOWCASE ===== */
+.show{padding:140px 0;overflow:hidden}
+.show-flex{display:flex;align-items:center;gap:64px}
+.show-vis{flex:1;display:flex;align-items:center;justify-content:center;min-height:360px;position:relative}
+.show-ring{position:absolute;border:1px solid var(--bd);border-radius:50%;animation:spin 25s linear infinite}
+.show-ring.r1{width:260px;height:260px}.show-ring.r2{width:340px;height:340px;animation-duration:35s;animation-direction:reverse;opacity:.5}.show-ring.r3{width:420px;height:420px;animation-duration:45s;opacity:.3}
+@keyframes spin{to{transform:rotate(360deg)}}
+.show-logo{width:160px;height:160px;border-radius:50%;object-fit:cover;border:2px solid var(--bd);position:relative;z-index:2;box-shadow:0 0 60px rgba(201,169,110,.12);transition:all .6s}
+.show-logo:hover{transform:scale(1.06);box-shadow:0 0 80px rgba(201,169,110,.2)}
+.show-txt{color:var(--tx2);line-height:1.9;margin-bottom:28px;font-size:1rem}
+.show-stats{display:flex;gap:36px;margin-bottom:32px}
+.show-sv{font-size:1.8rem;font-weight:900;color:var(--gold);letter-spacing:-1px}
+.show-sl{font-size:.75rem;color:var(--tx3);margin-top:2px}
+@media(max-width:768px){.show-flex{flex-direction:column;gap:36px}.show-vis{min-height:280px}}
 
-        /* ===== TESTIMONIALS ===== */
-        .test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-        .test-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:30px;transition:all .4s}
-        .test-card:hover{transform:translateY(-6px);border-color:var(--border-h)}
-        .test-stars{color:var(--gold);font-size:.88rem;margin-bottom:14px;letter-spacing:2px}
-        .test-txt{color:var(--tx2);font-size:.92rem;line-height:1.9;margin-bottom:20px;font-style:italic}
-        .test-auth{display:flex;align-items:center;gap:10px}
-        .test-av{width:42px;height:42px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--navy-d);font-size:.88rem}
-        .test-nm{font-weight:700;font-size:.88rem}
-        .test-loc{font-size:.75rem;color:var(--tx3)}
+/* ===== GALLERY ===== */
+.gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.gal-item{border-radius:16px;overflow:hidden;position:relative;border:1px solid var(--bd);transition:all .5s cubic-bezier(.4,0,.2,1)}
+.gal-item:hover{box-shadow:0 20px 50px rgba(0,0,0,.2)}
+.gal-item img{width:100%;aspect-ratio:1;object-fit:cover;transition:transform .7s cubic-bezier(.4,0,.2,1)}
+.gal-item:hover img{transform:scale(1.05)}
+.gal-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,8,16,.8) 0%,transparent 50%);display:flex;align-items:flex-end;padding:20px;opacity:0;transition:opacity .4s}
+.gal-item:hover .gal-ov{opacity:1}
+.gal-ov span{color:var(--gold);font-weight:600;font-size:.85rem}
+@media(max-width:768px){.gal-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.gal-grid{grid-template-columns:1fr}}
 
-        /* ===== CONTACT ===== */
-        .contact-bg{background:var(--bg2)}
-        .contact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-        .contact-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:34px;text-decoration:none;color:inherit;transition:all .4s;display:block}
-        .contact-card:hover{transform:translateY(-6px);border-color:var(--border-h)}
-        .contact-ico{width:50px;height:50px;background:var(--gold-dim);border:1px solid var(--border);border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:16px;transition:all .3s}
-        .contact-card:hover .contact-ico{background:var(--gold)}
-        .contact-card h3{font-size:1.1rem;font-weight:700;margin-bottom:6px}
-        .contact-card p{color:var(--tx2);font-size:.88rem;line-height:1.7;margin-bottom:14px}
-        .contact-link{display:inline-flex;align-items:center;gap:6px;color:var(--gold);font-weight:600;font-size:.85rem;transition:gap .3s}
-        .contact-card:hover .contact-link{gap:10px}
+/* ===== TESTIMONIALS ===== */
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.test-card{background:var(--sf);border:1px solid var(--bd);border-radius:16px;padding:28px;transition:all .4s}
+.test-card:hover{transform:translateY(-6px);border-color:var(--bd2)}
+.test-stars{color:var(--gold);font-size:.85rem;margin-bottom:12px;letter-spacing:2px}
+.test-txt{color:var(--tx2);font-size:.9rem;line-height:1.9;margin-bottom:18px;font-style:italic}
+.test-auth{display:flex;align-items:center;gap:10px}
+.test-av{width:40px;height:40px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--navy-d);font-size:.85rem}
+.test-nm{font-weight:700;font-size:.85rem}.test-loc{font-size:.72rem;color:var(--tx3)}
+@media(max-width:1024px){.test-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){.test-grid{grid-template-columns:1fr}}
 
-        /* ===== CTA ===== */
-        .cta{padding:160px 0;text-align:center;position:relative;overflow:hidden}
-        .cta-glow{position:absolute;width:600px;height:600px;background:var(--gold-dim);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);filter:blur(160px);opacity:.25}
-        .cta-title{font-size:clamp(2rem,5vw,3.8rem);font-weight:900;letter-spacing:-2px;margin-bottom:18px;line-height:1.1}
-        .cta-desc{font-size:1.05rem;color:var(--tx2);max-width:460px;margin:0 auto 36px;line-height:1.9}
+/* ===== CONTACT ===== */
+.contact-bg{background:var(--bg2)}
+.contact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.contact-card{background:var(--sf);border:1px solid var(--bd);border-radius:16px;padding:30px;text-decoration:none;color:inherit;transition:all .4s;display:block}
+.contact-card:hover{transform:translateY(-6px);border-color:var(--bd2)}
+.contact-ico{width:46px;height:46px;background:var(--gold-dim);border:1px solid var(--bd);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:14px;transition:all .3s}
+.contact-card:hover .contact-ico{background:var(--gold)}
+.contact-card h3{font-size:1.05rem;font-weight:700;margin-bottom:5px}
+.contact-card p{color:var(--tx2);font-size:.85rem;line-height:1.7;margin-bottom:12px}
+.contact-link{display:inline-flex;align-items:center;gap:5px;color:var(--gold);font-weight:600;font-size:.82rem;transition:gap .3s}
+.contact-card:hover .contact-link{gap:9px}
+@media(max-width:768px){.contact-grid{grid-template-columns:1fr}}
 
-        /* ===== FOOTER ===== */
-        .footer{border-top:1px solid var(--border);padding:60px 0 36px}
-        .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:44px;margin-bottom:44px}
-        .footer-brand p{color:var(--tx3);font-size:.85rem;margin-top:10px;line-height:1.7;max-width:270px}
-        .footer-social{display:flex;gap:9px;margin-top:16px}
-        .footer-social a{width:38px;height:38px;background:var(--surface);border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:.95rem;transition:all .3s}
-        .footer-social a:hover{background:var(--gold);transform:translateY(-2px)}
-        .footer-col h4{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--tx3);margin-bottom:16px}
-        .footer-col a{display:block;color:var(--tx2);text-decoration:none;font-size:.85rem;padding:4px 0;transition:color .3s}
-        .footer-col a:hover{color:var(--gold)}
-        .footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid var(--border);font-size:.8rem;color:var(--tx3)}
+/* ===== CTA ===== */
+.cta{padding:140px 0;text-align:center;position:relative;overflow:hidden}
+.cta-glow{position:absolute;width:500px;height:500px;background:var(--gold-dim);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);filter:blur(140px);opacity:.2}
+.cta-title{font-size:clamp(1.8rem,4.5vw,3.4rem);font-weight:900;letter-spacing:-1.5px;margin-bottom:16px;line-height:1.1}
+.cta-desc{font-size:1rem;color:var(--tx2);max-width:440px;margin:0 auto 32px;line-height:1.9}
 
-        /* ===== ANIMATIONS ===== */
-        .a{opacity:0;transform:translateY(50px);transition:all .9s cubic-bezier(.4,0,.2,1)}
-        .a.on{opacity:1;transform:translateY(0)}
-        .a1{transition-delay:.1s}.a2{transition-delay:.2s}.a3{transition-delay:.3s}.a4{transition-delay:.4s}.a5{transition-delay:.5s}
+/* ===== FOOTER ===== */
+.footer{border-top:1px solid var(--bd);padding:56px 0 32px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.footer-brand p{color:var(--tx3);font-size:.82rem;margin-top:8px;line-height:1.7;max-width:260px}
+.footer-social{display:flex;gap:8px;margin-top:14px}
+.footer-social a{width:36px;height:36px;background:var(--sf);border:1px solid var(--bd);border-radius:9px;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:.9rem;transition:all .3s}
+.footer-social a:hover{background:var(--gold);transform:translateY(-2px)}
+.footer-col h4{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--tx3);margin-bottom:14px}
+.footer-col a{display:block;color:var(--tx2);text-decoration:none;font-size:.82rem;padding:4px 0;transition:color .3s}
+.footer-col a:hover{color:var(--gold)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:20px;border-top:1px solid var(--bd);font-size:.78rem;color:var(--tx3)}
+@media(max-width:768px){.footer-grid{grid-template-columns:1fr}.footer-bottom{flex-direction:column;gap:8px;text-align:center}}
 
-        /* Magnetic pull */
-        .mag{transition:transform .3s cubic-bezier(.4,0,.2,1)}
-
-        /* Tilt 3D on mouse */
-        .tilt{transition:transform .15s ease-out}
-
-        /* ===== LOADER ===== */
-        .loader{position:fixed;inset:0;background:var(--bg);z-index:9999;display:flex;align-items:center;justify-content:center;transition:opacity .6s,visibility .6s}
-        .loader.hide{opacity:0;visibility:hidden;pointer-events:none}
-        .loader-ring{width:36px;height:36px;border:2px solid var(--border);border-top-color:var(--gold);border-radius:50%;animation:spin .7s linear infinite}
-
-        /* ===== RESPONSIVE ===== */
-        @media(max-width:1024px){
-            .feat-grid,.test-grid,.gal-grid,.contact-grid{grid-template-columns:repeat(2,1fr)}
-            .show-stage{flex-direction:column;gap:48px}
-            .footer-grid{grid-template-columns:1fr 1fr}
-        }
-        @media(max-width:768px){
-            body{cursor:auto}
-            .cursor,.cursor-dot{display:none}
-            .nav-links,.nav-cta{display:none}
-            .mob-btn{display:block}
-            .about-grid{grid-template-columns:1fr;gap:40px}
-            .about-card{transform:none;max-width:340px;margin:0 auto}
-            .feat-grid,.test-grid,.gal-grid,.contact-grid{grid-template-columns:1fr}
-            .footer-grid{grid-template-columns:1fr}
-            .footer-bottom{flex-direction:column;gap:8px;text-align:center}
-            .hero-stats{gap:28px;flex-wrap:wrap}
-        }
-        @media(max-width:480px){
-            .hero-actions{flex-direction:column;align-items:center}
-            .btn-g,.btn-o{width:100%;justify-content:center}
-        }
-    </style>
+/* ===== LOADER ===== */
+.loader{position:fixed;inset:0;background:var(--bg);z-index:9999;display:flex;align-items:center;justify-content:center;transition:opacity .8s cubic-bezier(.4,0,.2,1),visibility .8s}
+.loader.hide{opacity:0;visibility:hidden;pointer-events:none}
+.loader-text{font-size:3rem;font-weight:900;color:var(--gold);letter-spacing:-2px;animation:loaderPulse 1.5s ease-in-out infinite}
+@keyframes loaderPulse{0%,100%{opacity:.3;transform:scale(.95)}50%{opacity:1;transform:scale(1.05)}}
+</style>
 </head>
 <body>
-    <div id="loader" class="loader"><div class="loader-ring"></div></div>
 
-    <!-- Custom Cursor -->
-    <div id="cursor" class="cursor"><div class="cursor-dot"></div></div>
+<!-- Grain -->
+<div class="grain"><canvas id="grainCanvas"></canvas></div>
 
-    <!-- Theme -->
-    <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">🌙</button>
+<!-- Loader -->
+<div id="loader" class="loader"><div class="loader-text">JUN</div></div>
 
-    <!-- Mobile -->
-    <div id="mobOv" class="mob-ov">
-        <a href="#home" onclick="closeMob()">الرئيسية</a>
-        <a href="#about" onclick="closeMob()">من نحن</a>
-        <a href="#features" onclick="closeMob()">المميزات</a>
-        <a href="#gallery" onclick="closeMob()">المعرض</a>
-        <a href="#contact" onclick="closeMob()">تواصلي معنا</a>
-    </div>
+<!-- Cursor -->
+<div id="cur" class="cur"></div>
+<div id="curDot" class="cur-dot"></div>
 
-    <!-- Nav -->
-    <nav id="nav" class="nav">
-        <div class="ctr">
-            <a href="#home" class="nav-brand"><img src="images/profile/Logo.jpg" alt="JUN"><span>JUN</span></a>
-            <ul class="nav-links">
-                <li><a href="#home">الرئيسية</a></li>
-                <li><a href="#about">من نحن</a></li>
-                <li><a href="#features">المميزات</a></li>
-                <li><a href="#gallery">المعرض</a></li>
-            </ul>
-            <a href="#contact" class="nav-cta">تواصلي معنا</a>
-            <button id="mobBtn" class="mob-btn" onclick="toggleMob()"><span></span><span></span><span></span></button>
-        </div>
-    </nav>
+<!-- Theme -->
+<button class="theme" id="themeBtn" onclick="toggleTheme()">🌙</button>
 
-    <!-- HERO -->
-    <section id="home" class="hero">
-        <div class="hero-orbs">
-            <div class="hero-orb a"></div>
-            <div class="hero-orb b"></div>
-            <div class="hero-orb c"></div>
-        </div>
-        <div class="hero-grid"></div>
-        <div class="hero-content">
-            <div class="hero-badge a">
-                <span class="hero-badge-dot"></span>
-                مسقط، عُمان
-            </div>
-            <h1 class="hero-title">
-                <span class="line"><span>جمالك</span></span>
-                <span class="line"><span class="gold">يبدأ من هنا</span></span>
-            </h1>
-            <p class="hero-sub a a1">منتجات عناية بالبشرة طبيعية عالية الجودة. تصميم أنيق، نتائج حقيقية، وأسعار تنافسية من قلب عُمان.</p>
-            <div class="hero-actions a a2">
-                <a href="https://wa.me/96899166008" target="_blank" class="btn-g mag">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                    اطلبي الآن
-                </a>
-                <a href="#about" class="btn-o mag">
-                    اكتشفي المزيد
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-                </a>
-            </div>
-            <div class="hero-stats a a3">
-                <div><div class="hero-stat-val">85K+</div><div class="hero-stat-lbl">متابع</div></div>
-                <div><div class="hero-stat-val">500+</div><div class="hero-stat-lbl">منشور</div></div>
-                <div><div class="hero-stat-val">4.9</div><div class="hero-stat-lbl">تقييم</div></div>
-                <div><div class="hero-stat-val">🇴🇲</div><div class="hero-stat-lbl">مسقط، عُمان</div></div>
-            </div>
-        </div>
-        <div class="hero-scroll"><div class="hero-scroll-line"></div></div>
-    </section>
+<!-- Mobile -->
+<div id="mobOv" class="mob-ov">
+<a href="#home" onclick="closeMob()">الرئيسية</a>
+<a href="#about" onclick="closeMob()">من نحن</a>
+<a href="#features" onclick="closeMob()">المميزات</a>
+<a href="#gallery" onclick="closeMob()">المعرض</a>
+<a href="#contact" onclick="closeMob()">تواصلي معنا</a>
+</div>
 
-    <!-- ABOUT -->
-    <section id="about" class="sec about-bg">
-        <div class="ctr">
-            <div class="about-grid">
-                <div class="about-vis a">
-                    <div class="about-card">
-                        <img src="images/profile/Logo.jpg" alt="JUN Brand">
-                    </div>
-                    <div class="about-float">
-                        <div class="about-float-ico">✨</div>
-                        <div class="about-float-txt"><span>المتابعون</span><strong>+85,000</strong></div>
-                    </div>
-                </div>
-                <div>
-                    <div class="sec-label a">من نحن</div>
-                    <h2 class="sec-title a a1">علامة عمانية<br>أصيلة وفاخرة</h2>
-                    <p class="about-txt a a2">أنا جهناء حمود، صانعة محتوى عمانية من مسقط. أقدم لكم JUN، علامتي الشخصية التي تجمع بين الجمال والأصالة العمانية. أؤمن بأن الجمال الحقيقي يكمن في التفاصيل الصغيرة.</p>
-                    <div class="about-feats a a3">
-                        <div class="about-ft"><div class="about-ft-ico">🌿</div><span>منتجات طبيعية 100% معتمدة</span></div>
-                        <div class="about-ft"><div class="about-ft-ico">💎</div><span>جودة عالية بأسعار تنافسية</span></div>
-                        <div class="about-ft"><div class="about-ft-ico">🚀</div><span>توصيل سريع لجميع أنحاء عُمان</span></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- Nav -->
+<nav id="nav" class="nav"><div class="ctr">
+<a href="#home" class="nav-brand"><img src="images/profile/Logo.jpg" alt="JUN"><span>JUN</span></a>
+<ul class="nav-links"><li><a href="#home">الرئيسية</a></li><li><a href="#about">من نحن</a></li><li><a href="#features">المميزات</a></li><li><a href="#gallery">المعرض</a></li></ul>
+<a href="#contact" class="nav-cta">تواصلي معنا</a>
+<button id="mobBtn" class="mob-tog" onclick="toggleMob()"><span></span><span></span><span></span></button>
+</div></nav>
 
-    <!-- FEATURES -->
-    <section id="features" class="sec feat-bg">
-        <div class="ctr">
-            <div class="sec-center">
-                <div class="sec-label a">المميزات</div>
-                <h2 class="sec-title a a1">لماذا تختارين <span class="gold">JUN</span></h2>
-                <p class="sec-desc a a2">تجربة فريدة تجمع بين الجمال الطبيعي والجودة العالية</p>
-            </div>
-            <div class="feat-grid" style="margin-top:60px">
-                <div class="feat-card tilt a"><div class="feat-ico">🧴</div><h3 class="feat-t">عناية متكاملة</h3><p class="feat-d">مجموعة مختارة من منتجات العناية بالبشرة الطبيعية</p></div>
-                <div class="feat-card tilt a a1"><div class="feat-ico">🌸</div><h3 class="feat-t">مكياج أنيق</h3><p class="feat-d">مستحضرات تجميل عصرية لإطلالة طبيعية متألقة</p></div>
-                <div class="feat-card tilt a a2"><div class="feat-ico">✨</div><h3 class="feat-t">محتوى إلهامي</h3><p class="feat-d">نصائح يومية من خبرة حقيقية في عالم الجمال</p></div>
-                <div class="feat-card tilt a a3"><div class="feat-ico">🇴🇲</div><h3 class="feat-t">أصالة عمانية</h3><p class="feat-d">علامة 100% عمانية تجمع بين التراث والحداثة</p></div>
-                <div class="feat-card tilt a a4"><div class="feat-ico">📦</div><h3 class="feat-t">توصيل سريع</h3><p class="feat-d">خدمة توصيل موثوقة لجميع محافظات عُمان</p></div>
-                <div class="feat-card tilt a a5"><div class="feat-ico">💬</div><h3 class="feat-t">دعم مباشر</h3><p class="feat-d">تواصل فوري عبر واتساب لجميع استفساراتك</p></div>
-            </div>
-        </div>
-    </section>
+<!-- HERO -->
+<section id="home" class="hero">
+<div class="hero-mesh">
+<div class="hero-blob b1"></div>
+<div class="hero-blob b2"></div>
+<div class="hero-blob b3"></div>
+</div>
+<div class="hero-content">
+<div class="hero-badge"><span class="hero-badge-dot"></span>مسقط، عُمان</div>
+<h1 class="hero-title" id="heroTitle"></h1>
+<p class="hero-sub">منتجات عناية بالبشرة طبيعية عالية الجودة. تصميم أنيق، نتائج حقيقية، وأسعار تنافسية من قلب عُمان.</p>
+<div class="hero-actions">
+<a href="https://wa.me/96899166008" target="_blank" class="btn-g" data-magnetic>
+<svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+اطلبي الآن
+</a>
+<a href="#about" class="btn-o" data-magnetic>
+اكتشفي المزيد
+<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+</a>
+</div>
+<div class="hero-stats">
+<div><div class="hero-sv">85K+</div><div class="hero-sl">متابع</div></div>
+<div><div class="hero-sv">500+</div><div class="hero-sl">منشور</div></div>
+<div><div class="hero-sv">4.9</div><div class="hero-sl">تقييم</div></div>
+<div><div class="hero-sv">🇴🇲</div><div class="hero-sl">مسقط، عُمان</div></div>
+</div>
+</div>
+<div class="hero-scroll"><div class="hero-scroll-line"></div></div>
+</section>
 
-    <!-- SHOWCASE -->
-    <section class="show">
-        <div class="ctr">
-            <div class="show-stage">
-                <div class="show-vis a">
-                    <div class="show-ring r1"></div>
-                    <div class="show-ring r2"></div>
-                    <div class="show-ring r3"></div>
-                    <img src="images/profile/Logo.jpg" alt="JUN" class="show-logo">
-                </div>
-                <div class="show-info">
-                    <div class="sec-label a">المنتج الرئيسي</div>
-                    <h2 class="sec-title a a1">جمال يتجاوز<br>التوقعات</h2>
-                    <p class="show-txt a a2">كل منتج في مجموعة JUN يمر بمراحل اختبار صارمة لضمان أعلى معايير الجودة. نستخدم مكونات طبيعية مختارة بعناية من أجود المصادر.</p>
-                    <div class="show-stats a a3">
-                        <div><div class="show-sv">100%</div><div class="show-sl">مكونات طبيعية</div></div>
-                        <div><div class="show-sv">85K+</div><div class="show-sl">عملية راضية</div></div>
-                        <div><div class="show-sv">4.9</div><div class="show-sl">متوسط التقييم</div></div>
-                    </div>
-                    <a href="https://wa.me/96899166008" target="_blank" class="btn-g mag a a4">اطلبي الآن</a>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- MARQUEE -->
+<div class="marquee">
+<div class="marquee-track">
+<span>JUN BEAUTY</span><span class="dot">◆</span>
+<span>العناية بالبشرة</span><span class="dot">◆</span>
+<span>NATURAL SKINCARE</span><span class="dot">◆</span>
+<span>muscat, oman</span><span class="dot">◆</span>
+<span>بواسطة جهناء حمود</span><span class="dot">◆</span>
+<span>JUN BEAUTY</span><span class="dot">◆</span>
+<span>العناية بالبشرة</span><span class="dot">◆</span>
+<span>NATURAL SKINCARE</span><span class="dot">◆</span>
+<span>muscat, oman</span><span class="dot">◆</span>
+<span>بواسطة جهناء حمود</span><span class="dot">◆</span>
+<span>JUN BEAUTY</span><span class="dot">◆</span>
+<span>العناية بالبشرة</span><span class="dot">◆</span>
+<span>NATURAL SKINCARE</span><span class="dot">◆</span>
+<span>muscat, oman</span><span class="dot">◆</span>
+<span>بواسطة جهناء حمود</span><span class="dot">◆</span>
+</div>
+</div>
 
-    <!-- GALLERY -->
-    <section id="gallery" class="sec feat-bg">
-        <div class="ctr">
-            <div class="sec-center">
-                <div class="sec-label a">المعرض</div>
-                <h2 class="sec-title a a1">لحظات <span class="gold">أنيقة</span></h2>
-                <p class="sec-desc a a2">استعرضي أجمل المنشورات من حسابنا</p>
-            </div>
-            <div class="gal-grid" style="margin-top:60px">
-                <div class="gal-item tilt a"><img src="images/posts/post_DN2o87v2GTL.jpg" alt="Post 1" onerror="this.src='images/profile/Logo.jpg'"><div class="gal-ov"><span>@jun.omn</span></div></div>
-                <div class="gal-item tilt a a1"><img src="images/posts/post_DKcfv3YK4Zm.jpg" alt="Post 2" onerror="this.src='images/profile/Logo.jpg'"><div class="gal-ov"><span>@jun.omn</span></div></div>
-                <div class="gal-item tilt a a2"><img src="images/profile/Logo.jpg" alt="JUN Logo"><div class="gal-ov"><span>الهوية البصرية</span></div></div>
-            </div>
-        </div>
-    </section>
+<!-- ABOUT -->
+<section id="about" class="sec about-bg">
+<div class="ctr"><div class="about-grid">
+<div class="about-vis sr sr-left">
+<div class="about-img"><img src="images/profile/Logo.jpg" alt="JUN Brand"></div>
+<div class="about-badge">
+<div class="about-badge-ico">✨</div>
+<div class="about-badge-txt"><span>المتابعون</span><strong>+85,000</strong></div>
+</div>
+</div>
+<div>
+<div class="sec-label sr sr-up">من نحن</div>
+<h2 class="sec-title sr sr-up d1">علامة عمانية<br>أصيلة وفاخرة</h2>
+<p class="about-txt sr sr-up d2">أنا جهناء حمود، صانعة محتوى عمانية من مسقط. أقدم لكم JUN، علامتي الشخصية التي تجمع بين الجمال والأصالة العمانية. أؤمن بأن الجمال الحقيقي يكمن في التفاصيل الصغيرة.</p>
+<div class="about-feats sr sr-up d3">
+<div class="about-ft"><div class="about-ft-ico">🌿</div><span>منتجات طبيعية 100% معتمدة</span></div>
+<div class="about-ft"><div class="about-ft-ico">💎</div><span>جودة عالية بأسعار تنافسية</span></div>
+<div class="about-ft"><div class="about-ft-ico">🚀</div><span>توصيل سريع لجميع أنحاء عُمان</span></div>
+</div>
+</div>
+</div></div>
+</section>
 
-    <!-- TESTIMONIALS -->
-    <section class="sec">
-        <div class="ctr">
-            <div class="sec-center">
-                <div class="sec-label a">آراء العملاء</div>
-                <h2 class="sec-title a a1">ماذا يقول <span class="gold">عملاؤنا</span></h2>
-            </div>
-            <div class="test-grid" style="margin-top:60px">
-                <div class="test-card a"><div class="test-stars">★★★★★</div><p class="test-txt">"منتجات رائعة وفعّالة! بشرتي تحسنت بشكل ملحوظ بعد أسبوعين فقط. أنصح الجميع بتجربة منتجات JUN."</p><div class="test-auth"><div class="test-av">س</div><div><div class="test-nm">سارة المعمري</div><div class="test-loc">مسقط، عُمان</div></div></div></div>
-                <div class="test-card a a1"><div class="test-stars">★★★★★</div><p class="test-txt">"أفضل منتجات عناية بالبشرة جربتها! الجودة عالية والأسعار معقولة. التغليف أنيق جداً."</p><div class="test-auth"><div class="test-av">ن</div><div><div class="test-nm">نورة الراشدي</div><div class="test-loc">صلالة، عُمان</div></div></div></div>
-                <div class="test-card a a2"><div class="test-stars">★★★★★</div><p class="test-txt">"جهناء حمود شخصية ملهمة! محتواها رائع ومنتجاتها تعكس الذوق الرفيع. أصبحت من أشد المعجبات."</p><div class="test-auth"><div class="test-av">ف</div><div><div class="test-nm">فاطمة البلوشي</div><div class="test-loc">بهلاء، عُمان</div></div></div></div>
-            </div>
-        </div>
-    </section>
+<!-- FEATURES -->
+<section id="features" class="sec feat-bg">
+<div class="ctr">
+<div class="sec-center">
+<div class="sec-label sr sr-up">المميزات</div>
+<h2 class="sec-title sr sr-up d1">لماذا تختارين <span style="color:var(--gold)">JUN</span></h2>
+<p class="sec-desc sr sr-up d2">تجربة فريدة تجمع بين الجمال الطبيعي والجودة العالية</p>
+</div>
+<div class="feat-grid" style="margin-top:56px">
+<div class="feat-card sr sr-up"><div class="feat-ico">🧴</div><h3 class="feat-t">عناية متكاملة</h3><p class="feat-d">مجموعة مختارة من منتجات العناية بالبشرة الطبيعية</p></div>
+<div class="feat-card sr sr-up d1"><div class="feat-ico">🌸</div><h3 class="feat-t">مكياج أنيق</h3><p class="feat-d">مستحضرات تجميل عصرية لإطلالة طبيعية متألقة</p></div>
+<div class="feat-card sr sr-up d2"><div class="feat-ico">✨</div><h3 class="feat-t">محتوى إلهامي</h3><p class="feat-d">نصائح يومية من خبرة حقيقية في عالم الجمال</p></div>
+<div class="feat-card sr sr-up d3"><div class="feat-ico">🇴🇲</div><h3 class="feat-t">أصالة عمانية</h3><p class="feat-d">علامة 100% عمانية تجمع بين التراث والحداثة</p></div>
+<div class="feat-card sr sr-up d4"><div class="feat-ico">📦</div><h3 class="feat-t">توصيل سريع</h3><p class="feat-d">خدمة توصيل موثوقة لجميع محافظات عُمان</p></div>
+<div class="feat-card sr sr-up d5"><div class="feat-ico">💬</div><h3 class="feat-t">دعم مباشر</h3><p class="feat-d">تواصل فوري عبر واتساب لجميع استفساراتك</p></div>
+</div>
+</div>
+</section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="sec contact-bg">
-        <div class="ctr">
-            <div class="sec-center">
-                <div class="sec-label a">تواصلي معنا</div>
-                <h2 class="sec-title a a1">جاهزات <span class="gold">لمساعدتك</span></h2>
-            </div>
-            <div class="contact-grid" style="margin-top:60px">
-                <a href="https://wa.me/96899166008" target="_blank" class="contact-card a"><div class="contact-ico">💬</div><h3>واتساب</h3><p>تواصلي معنا مباشرة للطلب والاستفسارات</p><span class="contact-link">راسلنا الآن ←</span></a>
-                <a href="https://www.instagram.com/jun.omn/" target="_blank" class="contact-card a a1"><div class="contact-ico">📸</div><h3>Instagram</h3><p>تابعينا للحصول على أحدث المنتجات والمحتوى</p><span class="contact-link">@jun.omn ←</span></a>
-                <a href="https://www.instagram.com/juhaina.omn/" target="_blank" class="contact-card a a2"><div class="contact-ico">🛍️</div><h3>حساب الطلبات</h3><p>لطلب المنتجات مباشرة</p><span class="contact-link">@juhaina.omn ←</span></a>
-                <a href="https://www.snapchat.com/@juhainahamood" target="_blank" class="contact-card a a3"><div class="contact-ico">👻</div><h3>Snapchat</h3><p>شاهدي يوميات جهناء ومحتوى حصري</p><span class="contact-link">@juhainahamood ←</span></a>
-            </div>
-        </div>
-    </section>
+<!-- SHOWCASE -->
+<section class="show">
+<div class="ctr"><div class="show-flex">
+<div class="show-vis sr sr-scale">
+<div class="show-ring r1"></div><div class="show-ring r2"></div><div class="show-ring r3"></div>
+<img src="images/profile/Logo.jpg" alt="JUN" class="show-logo">
+</div>
+<div>
+<div class="sec-label sr sr-right">المنتج الرئيسي</div>
+<h2 class="sec-title sr sr-right d1">جمال يتجاوز<br>التوقعات</h2>
+<p class="show-txt sr sr-right d2">كل منتج في مجموعة JUN يمر بمراحل اختبار صارمة لضمان أعلى معايير الجودة. نستخدم مكونات طبيعية مختارة بعناية من أجود المصادر.</p>
+<div class="show-stats sr sr-right d3">
+<div><div class="show-sv">100%</div><div class="show-sl">مكونات طبيعية</div></div>
+<div><div class="show-sv">85K+</div><div class="show-sl">عملية راضية</div></div>
+<div><div class="show-sv">4.9</div><div class="show-sl">متوسط التقييم</div></div>
+</div>
+<a href="https://wa.me/96899166008" target="_blank" class="btn-g sr sr-right d4" data-magnetic>اطلبي الآن</a>
+</div>
+</div></div>
+</section>
 
-    <!-- CTA -->
-    <section class="cta">
-        <div class="cta-glow"></div>
-        <div class="ctr">
-            <div style="position:relative;z-index:2">
-                <h2 class="cta-title a">مستعدة لاكتشاف<br><span class="gold">جمالك الحقيقي</span>؟</h2>
-                <p class="cta-desc a a1">ابدئي رحلتك مع JUN اليوم. تواصلي معنا واحصلي على استشارة مجانية.</p>
-                <div class="a a2">
-                    <a href="https://wa.me/96899166008?text=مرحبًا، أريد معرفة المزيد" target="_blank" class="btn-g mag">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                        اطلبي الآن
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- GALLERY -->
+<section id="gallery" class="sec feat-bg">
+<div class="ctr">
+<div class="sec-center">
+<div class="sec-label sr sr-up">المعرض</div>
+<h2 class="sec-title sr sr-up d1">لحظات <span style="color:var(--gold)">أنيقة</span></h2>
+</div>
+<div class="gal-grid" style="margin-top:56px">
+<div class="gal-item sr sr-up"><img src="images/posts/post_DN2o87v2GTL.jpg" alt="Post 1" onerror="this.src='images/profile/Logo.jpg'"><div class="gal-ov"><span>@jun.omn</span></div></div>
+<div class="gal-item sr sr-up d1"><img src="images/posts/post_DKcfv3YK4Zm.jpg" alt="Post 2" onerror="this.src='images/profile/Logo.jpg'"><div class="gal-ov"><span>@jun.omn</span></div></div>
+<div class="gal-item sr sr-up d2"><img src="images/profile/Logo.jpg" alt="JUN Logo"><div class="gal-ov"><span>الهوية البصرية</span></div></div>
+</div>
+</div>
+</section>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="ctr">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <a href="#home" class="nav-brand"><img src="images/profile/Logo.jpg" alt="JUN" style="width:34px;height:34px;border-radius:9px"><span>JUN</span></a>
-                    <p>علامة جمالية ونمط حياة فاخرة من مسقط، عُمان. بواسطة جهناء حمود.</p>
-                    <div class="footer-social">
-                        <a href="https://www.instagram.com/jun.omn/" target="_blank">📸</a>
-                        <a href="https://wa.me/96899166008" target="_blank">💬</a>
-                        <a href="https://www.snapchat.com/@juhainahamood" target="_blank">👻</a>
-                    </div>
-                </div>
-                <div class="footer-col"><h4>روابط</h4><a href="#home">الرئيسية</a><a href="#about">من نحن</a><a href="#features">المميزات</a><a href="#gallery">المعرض</a></div>
-                <div class="footer-col"><h4>الخدمات</h4><a href="#features">العناية بالبشرة</a><a href="#features">المكياج</a><a href="#features">نمط الحياة</a></div>
-                <div class="footer-col"><h4>تواصلي</h4><a href="https://wa.me/96899166008" target="_blank">واتساب</a><a href="https://www.instagram.com/jun.omn/" target="_blank">Instagram</a><a href="https://www.instagram.com/juhaina.omn/" target="_blank">حساب الطلبات</a></div>
-            </div>
-            <div class="footer-bottom">
-                <p>© 2026 JUN (@jun.omn). جميع الحقوق محفوظة.</p>
-                <p>بواسطة جهناء حمود | مسقط، عُمان</p>
-            </div>
-        </div>
-    </footer>
+<!-- TESTIMONIALS -->
+<section class="sec">
+<div class="ctr">
+<div class="sec-center">
+<div class="sec-label sr sr-up">آراء العملاء</div>
+<h2 class="sec-title sr sr-up d1">ماذا يقول <span style="color:var(--gold)">عملاؤنا</span></h2>
+</div>
+<div class="test-grid" style="margin-top:56px">
+<div class="test-card sr sr-up"><div class="test-stars">★★★★★</div><p class="test-txt">"منتجات رائعة وفعّالة! بشرتي تحسنت بشكل ملحوظ بعد أسبوعين فقط."</p><div class="test-auth"><div class="test-av">س</div><div><div class="test-nm">سارة المعمري</div><div class="test-loc">مسقط، عُمان</div></div></div></div>
+<div class="test-card sr sr-up d1"><div class="test-stars">★★★★★</div><p class="test-txt">"أفضل منتجات عناية بالبشرة جربتها! الجودة عالية والأسعار معقولة."</p><div class="test-auth"><div class="test-av">ن</div><div><div class="test-nm">نورة الراشدي</div><div class="test-loc">صلالة، عُمان</div></div></div></div>
+<div class="test-card sr sr-up d2"><div class="test-stars">★★★★★</div><p class="test-txt">"جهناء حمود شخصية ملهمة! محتواها رائع ومنتجاتها تعكس الذوق الرفيع."</p><div class="test-auth"><div class="test-av">ف</div><div><div class="test-nm">فاطمة البلوشي</div><div class="test-loc">بهلاء، عُمان</div></div></div></div>
+</div>
+</div>
+</section>
 
-    <script>
-    // Loader
-    window.addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('hide'),500));
+<!-- CONTACT -->
+<section id="contact" class="sec contact-bg">
+<div class="ctr">
+<div class="sec-center">
+<div class="sec-label sr sr-up">تواصلي معنا</div>
+<h2 class="sec-title sr sr-up d1">جاهزات <span style="color:var(--gold)">لمساعدتك</span></h2>
+</div>
+<div class="contact-grid" style="margin-top:56px">
+<a href="https://wa.me/96899166008" target="_blank" class="contact-card sr sr-up"><div class="contact-ico">💬</div><h3>واتساب</h3><p>تواصلي معنا مباشرة للطلب والاستفسارات</p><span class="contact-link">راسلنا الآن ←</span></a>
+<a href="https://www.instagram.com/jun.omn/" target="_blank" class="contact-card sr sr-up d1"><div class="contact-ico">📸</div><h3>Instagram</h3><p>تابعينا للحصول على أحدث المنتجات والمحتوى</p><span class="contact-link">@jun.omn ←</span></a>
+<a href="https://www.instagram.com/juhaina.omn/" target="_blank" class="contact-card sr sr-up d2"><div class="contact-ico">🛍️</div><h3>حساب الطلبات</h3><p>لطلب المنتجات مباشرة</p><span class="contact-link">@juhaina.omn ←</span></a>
+<a href="https://www.snapchat.com/@juhainahamood" target="_blank" class="contact-card sr sr-up d3"><div class="contact-ico">👻</div><h3>Snapchat</h3><p>شاهدي يوميات جهناء ومحتوى حصري</p><span class="contact-link">@juhainahamood ←</span></a>
+</div>
+</div>
+</section>
 
-    // Theme
-    function toggleTheme(){
-        const h=document.documentElement,b=document.getElementById('themeBtn');
-        const d=h.getAttribute('data-theme')==='dark';
-        h.setAttribute('data-theme',d?'light':'dark');
-        b.textContent=d?'☀️':'🌙';
-    }
+<!-- CTA -->
+<section class="cta">
+<div class="cta-glow"></div>
+<div class="ctr"><div style="position:relative;z-index:2">
+<h2 class="cta-title sr sr-up">مستعدة لاكتشاف<br><span style="color:var(--gold)">جمالك الحقيقي</span>؟</h2>
+<p class="cta-desc sr sr-up d1">ابدئي رحلتك مع JUN اليوم. تواصلي معنا واحصلي على استشارة مجانية.</p>
+<div class="sr sr-up d2"><a href="https://wa.me/96899166008?text=مرحبًا، أريد معرفة المزيد" target="_blank" class="btn-g" data-magnetic>
+<svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+اطلبي الآن
+</a></div>
+</div></div>
+</section>
 
-    // Custom Cursor
-    const cur=document.getElementById('cursor');
-    let mx=0,my=0,cx=0,cy=0;
-    document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
-    function animCursor(){
-        cx+=(mx-cx)*.15;cy+=(my-cy)*.15;
-        cur.style.left=cx+'px';cur.style.top=cy+'px';
-        requestAnimationFrame(animCursor);
-    }
-    animCursor();
+<!-- FOOTER -->
+<footer class="footer"><div class="ctr">
+<div class="footer-grid">
+<div class="footer-brand">
+<a href="#home" class="nav-brand"><img src="images/profile/Logo.jpg" alt="JUN" style="width:32px;height:32px;border-radius:8px"><span>JUN</span></a>
+<p>علامة جمالية ونمط حياة فاخرة من مسقط، عُمان. بواسطة جهناء حمود.</p>
+<div class="footer-social">
+<a href="https://www.instagram.com/jun.omn/" target="_blank">📸</a>
+<a href="https://wa.me/96899166008" target="_blank">💬</a>
+<a href="https://www.snapchat.com/@juhainahamood" target="_blank">👻</a>
+</div>
+</div>
+<div class="footer-col"><h4>روابط</h4><a href="#home">الرئيسية</a><a href="#about">من نحن</a><a href="#features">المميزات</a><a href="#gallery">المعرض</a></div>
+<div class="footer-col"><h4>الخدمات</h4><a href="#features">العناية بالبشرة</a><a href="#features">المكياج</a><a href="#features">نمط الحياة</a></div>
+<div class="footer-col"><h4>تواصلي</h4><a href="https://wa.me/96899166008" target="_blank">واتساب</a><a href="https://www.instagram.com/jun.omn/" target="_blank">Instagram</a><a href="https://www.instagram.com/juhaina.omn/" target="_blank">حساب الطلبات</a></div>
+</div>
+<div class="footer-bottom"><p>© 2026 JUN (@jun.omn). جميع الحقوق محفوظة.</p><p>بواسطة جهناء حمود | مسقط، عُمان</p></div>
+</div></footer>
 
-    // Cursor hover
-    document.querySelectorAll('a,button,.feat-card,.gal-item,.test-card,.contact-card,.btn-g,.btn-o,.mag').forEach(el=>{
-        el.addEventListener('mouseenter',()=>cur.classList.add('hover'));
-        el.addEventListener('mouseleave',()=>cur.classList.remove('hover'));
-    });
+<script>
+// Loader
+window.addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('hide'),800));
 
-    // Magnetic pull effect
-    document.querySelectorAll('.mag').forEach(el=>{
-        el.addEventListener('mousemove',e=>{
-            const r=el.getBoundingClientRect();
-            const x=e.clientX-r.left-r.width/2;
-            const y=e.clientY-r.top-r.height/2;
-            el.style.transform=`translate(${x*.2}px,${y*.2}px)`;
-        });
-        el.addEventListener('mouseleave',()=>{el.style.transform=''});
-    });
+// Theme
+function toggleTheme(){const h=document.documentElement,b=document.getElementById('themeBtn');const d=h.getAttribute('data-theme')==='dark';h.setAttribute('data-theme',d?'light':'dark');b.textContent=d?'☀️':'🌙'}
 
-    // 3D Tilt on mouse
-    document.querySelectorAll('.tilt').forEach(card=>{
-        card.addEventListener('mousemove',e=>{
-            const r=card.getBoundingClientRect();
-            const x=e.clientX-r.left;const y=e.clientY-r.top;
-            const cx=r.width/2;const cy=r.height/2;
-            const rx=(y-cy)/cy*-8;const ry=(x-cx)/cx*8;
-            card.style.transform=`perspective(800px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(10px) scale(1.02)`;
-        });
-        card.addEventListener('mouseleave',()=>{card.style.transform=''});
-    });
+// Grain
+(function(){const c=document.getElementById('grainCanvas'),x=c.getContext('2d');function r(){c.width=window.innerWidth;c.height=window.innerHeight;const i=x.createImageData(c.width,c.height),d=i.data;for(let p=0;p<d.length;p+=4){const v=Math.random()*255;d[p]=v;d[p+1]=v;d[p+2]=v;d[p+3]=20}x.putImageData(i,0,0)}r();setInterval(r,100);window.addEventListener('resize',r)})();
 
-    // Scroll Reveal
-    const io=new IntersectionObserver(entries=>{
-        entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')});
-    },{threshold:.08,rootMargin:'0px 0px -30px 0px'});
-    document.querySelectorAll('.a').forEach(el=>io.observe(el));
+// Cursor
+const cur=document.getElementById('cur'),dot=document.getElementById('curDot');
+let mx=0,my=0,cx=0,cy=0,dx=0,dy=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
+(function loop(){cx+=(mx-cx)*.12;cy+=(my-cy)*.12;dx+=(mx-dx)*.25;dy+=(my-dy)*.25;cur.style.left=cx+'px';cur.style.top=cy+'px';dot.style.left=dx+'px';dot.style.top=dy+'px';requestAnimationFrame(loop)})();
+document.querySelectorAll('a,button,.feat-card,.gal-item,.test-card,.contact-card,.btn-g,.btn-o,[data-magnetic]').forEach(el=>{el.addEventListener('mouseenter',()=>cur.classList.add('expanded'));el.addEventListener('mouseleave',()=>cur.classList.remove('expanded'))});
 
-    // Nav scroll
-    window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('sc',scrollY>50)});
+// Magnetic
+document.querySelectorAll('[data-magnetic]').forEach(el=>{
+el.addEventListener('mousemove',e=>{const r=el.getBoundingClientRect(),x=e.clientX-r.left-r.width/2,y=e.clientY-r.top-r.height/2;el.style.transform=`translate(${x*.15}px,${y*.15}px)`});
+el.addEventListener('mouseleave',()=>{el.style.transform=''});
+});
 
-    // Mobile
-    function toggleMob(){document.getElementById('mobOv').classList.toggle('act');document.getElementById('mobBtn').classList.toggle('act')}
-    function closeMob(){document.getElementById('mobOv').classList.remove('act');document.getElementById('mobBtn').classList.remove('act')}
+// Scroll Reveal
+const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')})},{threshold:.06,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.sr').forEach(el=>io.observe(el));
 
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-        a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})});
-    });
+// Nav scroll
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('sc',scrollY>50)});
 
-    // Parallax on scroll for hero grid
-    window.addEventListener('scroll',()=>{
-        const g=document.querySelector('.hero-grid');
-        if(g){const s=window.scrollY;g.style.transform=`perspective(500px) rotateX(60deg) translateY(${s*.15}px)`}
-    });
+// Mobile
+function toggleMob(){document.getElementById('mobOv').classList.toggle('on');document.getElementById('mobBtn').classList.toggle('on')}
+function closeMob(){document.getElementById('mobOv').classList.remove('on');document.getElementById('mobBtn').classList.remove('on')}
 
-    // 3D showcase logo rotation on scroll
-    window.addEventListener('scroll',()=>{
-        const l=document.querySelector('.show-logo');
-        if(l){const r=l.getBoundingClientRect();const vh=window.innerHeight;
-            if(r.top<vh&&r.bottom>0){
-                const p=(vh-r.top)/(vh+r.height);
-                const ry=(p-.5)*30;
-                l.style.transform=`rotateY(${ry}deg) scale(${.9+p*.2})`;
-            }
-        }
-    });
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
 
-    // Reduced motion
-    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-        const s=document.createElement('style');
-        s.textContent='*{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}';
-        document.head.appendChild(s);
-        cur.style.display='none';
-        document.querySelector('.cursor-dot').style.display='none';
-    }
-    </script>
+// Hero title char split
+(function(){
+const el=document.getElementById('heroTitle');
+const lines=[['ج','م','ا','ل','ك'],['ي','ب','د','أ'],['م','ن',' '،'ه','ن','ا']];
+const goldLine=1;
+el.innerHTML='';
+lines.forEach((line,li)=>{
+const span=document.createElement('span');
+span.className='line'+(li===goldLine?' gold':'');
+span.style.display='block';
+span.style.overflow='hidden';
+line.forEach((ch,ci)=>{
+const s=document.createElement('span');
+s.className='char';
+s.textContent=ch;
+s.style.animationDelay=(li*.4+ci*.06)+'s';
+span.appendChild(s);
+});
+el.appendChild(span);
+});
+})();
+
+// Show logo rotation on scroll
+window.addEventListener('scroll',()=>{
+const l=document.querySelector('.show-logo');
+if(l){const r=l.getBoundingClientRect(),vh=window.innerHeight;
+if(r.top<vh&&r.bottom>0){const p=(vh-r.top)/(vh+r.height);l.style.transform=`rotateY(${(p-.5)*25}deg) scale(${.92+p*.16})`}}
+});
+
+// Reduced motion
+if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+const s=document.createElement('style');s.textContent='*{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}';document.head.appendChild(s);
+cur.style.display='none';dot.style.display='none';
+}
+</script>
 </body>
 </html>
