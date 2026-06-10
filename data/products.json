@@ -1,0 +1,46 @@
+[
+  {
+    "id": "beauty_1",
+    "name": "العناية بالبشرة",
+    "type": "skincare",
+    "description": "منتجات عناية بالبشرة طبيعية وعالية الجودة",
+    "price": "",
+    "currency": "OMR",
+    "image": "https://www.instagram.com/jun.omn/media/?size=large",
+    "featured": true,
+    "category": "Beauty"
+  },
+  {
+    "id": "beauty_2",
+    "name": "المكياج",
+    "type": "makeup",
+    "description": "مستحضرات تجميل أنيقة وعصرية",
+    "price": "",
+    "currency": "OMR",
+    "image": "https://www.instagram.com/jun.omn/media/?size=large",
+    "featured": true,
+    "category": "Beauty"
+  },
+  {
+    "id": "lifestyle_1",
+    "name": "محتوى نمط الحياة",
+    "type": "lifestyle_content",
+    "description": "محتوى أنيق عن الحياة اليومية والأسلوب الشخصي",
+    "price": "",
+    "currency": "",
+    "image": "https://www.instagram.com/jun.omn/media/?size=large",
+    "featured": true,
+    "category": "Lifestyle"
+  },
+  {
+    "id": "fashion_1",
+    "name": "الأزياء والإكسسوارات",
+    "type": "fashion",
+    "description": "قطع أزياء مختارة بعناية وإكسسوارات أنيقة",
+    "price": "",
+    "currency": "OMR",
+    "image": "https://www.instagram.com/jun.omn/media/?size=large",
+    "featured": true,
+    "category": "Fashion"
+  }
+]

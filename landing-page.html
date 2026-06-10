@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JUN | @jun.omn - جمال عُمان</title>
+    <meta name="description" content="JUN (@jun.omn) - علامة جمالية ونمط حياة فاخرة من مسقط، عُمان. بواسطة جهناء حمود.">
+    <meta name="keywords" content="jun.omn, جمال, نمط حياة, عُمان, مسقط, جهناء حمود, فخامة, أناقة">
+    <meta property="og:title" content="JUN | @jun.omn">
+    <meta property="og:description" content="علامة جمالية ونمط حياة فاخرة من مسقط، عُمان">
+    <meta property="og:image" content="images/profile/Logo.jpg">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                        display: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        navy: {
+                            DEFAULT: '#3D4F5F',
+                            dark: '#2C3E4A',
+                            light: '#4A6070',
+                        },
+                        gold: {
+                            DEFAULT: '#C9A96E',
+                            light: '#D4B896',
+                            pale: '#E8D5B5',
+                            dark: '#B8955A',
+                        },
+                        cream: '#F5F0E8',
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        * { font-family: 'Cairo', sans-serif; }
+        body { background-color: #3D4F5F; color: #C9A96E; overflow-x: hidden; }
+        
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        
+        .glass { background: rgba(61, 79, 95, 0.9); backdrop-filter: blur(20px); border: 1px solid rgba(201, 169, 110, 0.2); }
+        
+        .gold-gradient { background: linear-gradient(135deg, #C9A96E 0%, #D4B896 50%, #C9A96E 100%); }
+        
+        .luxury-card {
+            background: linear-gradient(145deg, rgba(44, 62, 74, 0.8) 0%, rgba(61, 79, 95, 0.9) 100%);
+            border: 1px solid rgba(201, 169, 110, 0.3);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .luxury-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            border-color: rgba(201, 169, 110, 0.6);
+        }
+        
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
+        .floating { animation: float 6s ease-in-out infinite; }
+        
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        .shimmer {
+            background: linear-gradient(90deg, #C9A96E 0%, #E8D5B5 25%, #C9A96E 50%, #E8D5B5 75%, #C9A96E 100%);
+            background-size: 200% 100%;
+            animation: shimmer 3s linear infinite;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .pulse-ring::before {
+            content: '';
+            position: absolute;
+            inset: -10px;
+            border: 2px solid #C9A96E;
+            border-radius: 50%;
+            animation: pulse-ring 2s ease-out infinite;
+        }
+        @keyframes pulse-ring { 0% { transform: scale(0.8); opacity: 1; } 100% { transform: scale(1.3); opacity: 0; } }
+        
+        .hero-gradient {
+            background: radial-gradient(circle at center, rgba(201, 169, 110, 0.1) 0%, transparent 70%);
+        }
+        
+        .image-hover { overflow: hidden; }
+        .image-hover img { transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
+        .image-hover:hover img { transform: scale(1.1); }
+        
+        .text-glow { text-shadow: 0 0 30px rgba(201, 169, 110, 0.3); }
+        .box-glow { box-shadow: 0 0 40px rgba(201, 169, 110, 0.2); }
+        
+        .cinematic-reveal {
+            opacity: 0; transform: translateY(60px) scale(0.95); filter: blur(5px);
+            transition: all 1s cubic-bezier(0.215, 0.610, 0.355, 1);
+        }
+        .cinematic-reveal.active { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+        
+        html { scroll-behavior: smooth; }
+        
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #2C3E4A; }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(to bottom, #C9A96E, #B8955A); border-radius: 4px; }
+        
+        .loading-screen {
+            position: fixed; inset: 0; background: #3D4F5F; z-index: 9999;
+            display: flex; align-items: center; justify-content: center;
+            transition: opacity 0.5s ease;
+        }
+        
+        .nav-scrolled { box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3); }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Loading Screen -->
+    <div id="loading" class="loading-screen">
+        <div class="text-center">
+            <img src="images/profile/Logo.jpg" alt="JUN" class="w-32 mx-auto mb-4">
+            <div class="mt-4 w-32 h-1 mx-auto overflow-hidden rounded-full">
+                <div class="w-full h-full gold-gradient animate-pulse"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 glass transition-all duration-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-3 space-x-reverse">
+                    <img src="images/profile/Logo.jpg" alt="JUN Logo" class="w-12 h-12 rounded-full">
+                    <div>
+                        <h1 class="text-xl font-display font-bold text-gold">JUN</h1>
+                        <p class="text-xs text-gold-light">@jun.omn</p>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8 space-x-reverse">
+                    <a href="#home" class="text-gold hover:text-gold-light transition-colors font-medium">الرئيسية</a>
+                    <a href="#about" class="text-gold hover:text-gold-light transition-colors font-medium">من نحن</a>
+                    <a href="#services" class="text-gold hover:text-gold-light transition-colors font-medium">خدماتنا</a>
+                    <a href="#gallery" class="text-gold hover:text-gold-light transition-colors font-medium">المعرض</a>
+                    <a href="#contact" class="text-gold hover:text-gold-light transition-colors font-medium">تواصلي معنا</a>
+                </div>
+                
+                <a href="https://www.instagram.com/jun.omn/" target="_blank" class="hidden md:inline-flex items-center px-6 py-3 rounded-full gold-gradient text-navy font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105">
+                    تابعينا
+                </a>
+                
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-gold/10 transition-colors">
+                    <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <div id="mobile-menu" class="hidden md:hidden glass border-t border-gold/20">
+            <div class="px-4 py-4 space-y-3">
+                <a href="#home" class="block py-2 text-gold hover:text-gold-light transition-colors font-medium">الرئيسية</a>
+                <a href="#about" class="block py-2 text-gold hover:text-gold-light transition-colors font-medium">من نحن</a>
+                <a href="#services" class="block py-2 text-gold hover:text-gold-light transition-colors font-medium">خدماتنا</a>
+                <a href="#gallery" class="block py-2 text-gold hover:text-gold-light transition-colors font-medium">المعرض</a>
+                <a href="#contact" class="block py-2 text-gold hover:text-gold-light transition-colors font-medium">تواصلي معنا</a>
+                <a href="https://www.instagram.com/jun.omn/" target="_blank" class="block py-3 text-center gold-gradient text-navy rounded-full font-semibold">تابعينا على Instagram</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0 hero-gradient"></div>
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute top-20 right-10 w-72 h-72 bg-gold/5 rounded-full blur-3xl floating"></div>
+            <div class="absolute bottom-20 left-10 w-96 h-96 bg-gold/5 rounded-full blur-3xl floating" style="animation-delay: 2s;"></div>
+        </div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-24">
+            <div class="reveal">
+                <div class="mb-8 relative inline-block">
+                    <div class="w-48 h-48 mx-auto rounded-full p-1 box-glow">
+                        <img src="images/profile/Logo.jpg" alt="JUN Logo" class="w-full h-full rounded-full object-cover">
+                    </div>
+                    <div class="absolute -bottom-2 -right-2 w-12 h-12 gold-gradient rounded-full flex items-center justify-center">
+                        <svg class="w-6 h-6 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                    </div>
+                </div>
+                
+                <h1 class="text-6xl md:text-8xl lg:text-9xl font-display font-bold mb-4">
+                    <span class="shimmer">JUN</span>
+                </h1>
+                
+                <p class="text-xl md:text-2xl text-gold-light mb-2 font-medium">جمال عُمان في كل تفصيل</p>
+                <p class="text-lg text-gold/60 mb-8">@jun.omn</p>
+                
+                <p class="text-lg md:text-xl text-gold/80 mb-12 max-w-2xl mx-auto leading-relaxed">
+                    علامة جمالية ونمط حياة فاخرة من مسقط، عُمان. بواسطة جهناء حمود.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a href="#about" class="px-8 py-4 rounded-full gold-gradient text-navy font-semibold text-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                        اكتشفي JUN
+                    </a>
+                    <a href="https://www.instagram.com/jun.omn/" target="_blank" class="px-8 py-4 rounded-full border-2 border-gold text-gold font-semibold text-lg hover:bg-gold hover:text-navy transition-all duration-300">
+                        تابعينا على Instagram
+                    </a>
+                </div>
+                
+                <div class="mt-16 grid grid-cols-3 gap-8 max-w-md mx-auto">
+                    <div class="text-center">
+                        <div class="text-3xl md:text-4xl font-bold text-gold">85K+</div>
+                        <div class="text-sm text-gold/60">متابع</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl md:text-4xl font-bold text-gold">500+</div>
+                        <div class="text-sm text-gold/60">منشور</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl md:text-4xl font-bold text-gold">🇴🇲</div>
+                        <div class="text-sm text-gold/60">مسقط، عُمان</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <div class="w-8 h-12 border-2 border-gold rounded-full flex justify-center pt-2">
+                <div class="w-1 h-3 bg-gold rounded-full animate-pulse"></div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-navy-dark relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="reveal">
+                    <span class="inline-block px-4 py-2 bg-gold/10 text-gold rounded-full text-sm font-semibold mb-4">من نحن</span>
+                    <h2 class="text-4xl md:text-5xl font-display font-bold mb-6 text-gold">
+                        JUN <span class="text-gold-light">|</span> جهناء حمود
+                    </h2>
+                    <p class="text-lg text-gold/80 mb-6 leading-relaxed">
+                        أنا جهناء حمود، صانعة محتوى عمانية من مسقط. أقدم لكم JUN، علامتي الشخصية التي تجمع بين الجمال والأصالة العمانية.
+                    </p>
+                    <p class="text-lg text-gold/80 mb-8 leading-relaxed">
+                        أؤمن بأن الجمال الحقيقي يكمن في التفاصيل الصغيرة. كل منشور، كل صورة، وكل لحظة أشاركها تعكس رؤيتي الفريدة للحياة والأناقة.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="luxury-card rounded-xl p-6">
+                            <div class="w-12 h-12 bg-gold/20 rounded-lg flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-bold text-gold mb-2">الأصالة</h3>
+                            <p class="text-sm text-gold/60">محتوى أصيل يعكس الثقافة العمانية</p>
+                        </div>
+                        
+                        <div class="luxury-card rounded-xl p-6">
+                            <div class="w-12 h-12 bg-gold/20 rounded-lg flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-bold text-gold mb-2">الفخامة</h3>
+                            <p class="text-sm text-gold/60">محتوى عالي الجودة وأنيق</p>
+                        </div>
+                        
+                        <div class="luxury-card rounded-xl p-6">
+                            <div class="w-12 h-12 bg-gold/20 rounded-lg flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-bold text-gold mb-2">الإلهام</h3>
+                            <p class="text-sm text-gold/60">نصائح وإلهام للحياة اليومية</p>
+                        </div>
+                        
+                        <div class="luxury-card rounded-xl p-6">
+                            <div class="w-12 h-12 bg-gold/20 rounded-lg flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-bold text-gold mb-2">الانتشار</h3>
+                            <p class="text-sm text-gold/60">وصول واسع في عُمان والخليج</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="reveal">
+                    <div class="luxury-card rounded-3xl p-8 box-glow">
+                        <div class="text-center mb-8">
+                            <div class="w-32 h-32 mx-auto rounded-full overflow-hidden mb-4 box-glow image-hover">
+                                <img src="images/profile/Logo.jpg" alt="JUN Profile" class="w-full h-full object-cover">
+                            </div>
+                            <h3 class="text-2xl font-display font-bold text-gold">• 𝗝𝗨𝗡</h3>
+                            <p class="text-gold-light">@jun.omn</p>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center py-3 border-b border-gold/20">
+                                <span class="text-gold/60">المتابعون</span>
+                                <span class="font-bold text-gold">85K+</span>
+                            </div>
+                            <div class="flex justify-between items-center py-3 border-b border-gold/20">
+                                <span class="text-gold/60">المنشورات</span>
+                                <span class="font-bold text-gold">500+</span>
+                            </div>
+                            <div class="flex justify-between items-center py-3 border-b border-gold/20">
+                                <span class="text-gold/60">المالكة</span>
+                                <span class="font-bold text-gold">جهناء حمود</span>
+                            </div>
+                            <div class="flex justify-between items-center py-3">
+                                <span class="text-gold/60">الموقع</span>
+                                <span class="font-bold text-gold">مسقط، عُمان 🇴🇲</span>
+                            </div>
+                        </div>
+                        
+                        <a href="https://www.instagram.com/jun.omn/" target="_blank" class="mt-8 block w-full py-4 text-center gold-gradient text-navy rounded-full font-semibold hover:shadow-xl transition-all duration-300">
+                            زيارة الحساب
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-navy relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <span class="inline-block px-4 py-2 bg-gold/10 text-gold rounded-full text-sm font-semibold mb-4">خدماتنا</span>
+                <h2 class="text-4xl md:text-5xl font-display font-bold mb-4 text-gold">
+                    ما نقدمه <span class="text-gold-light">لكِ</span>
+                </h2>
+                <p class="text-lg text-gold/60 max-w-2xl mx-auto">مجموعة مختارة من المنتجات والمحتوى العالي الجودة</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="reveal cinematic-reveal">
+                    <div class="luxury-card rounded-2xl p-8 h-full text-center group">
+                        <div class="w-20 h-20 mx-auto mb-6 bg-gold/20 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-10 h-10 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gold mb-3">العناية بالبشرة</h3>
+                        <p class="text-gold/60 leading-relaxed">منتجات طبيعية عالية الجودة لعناية متكاملة ببشرتكِ</p>
+                    </div>
+                </div>
+                
+                <div class="reveal cinematic-reveal" style="transition-delay: 0.1s;">
+                    <div class="luxury-card rounded-2xl p-8 h-full text-center group">
+                        <div class="w-20 h-20 mx-auto mb-6 bg-gold/20 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-10 h-10 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gold mb-3">المكياج</h3>
+                        <p class="text-gold/60 leading-relaxed">مستحضرات تجميل أنيقة وعصرية لإطلالة متألقة</p>
+                    </div>
+                </div>
+                
+                <div class="reveal cinematic-reveal" style="transition-delay: 0.2s;">
+                    <div class="luxury-card rounded-2xl p-8 h-full text-center group">
+                        <div class="w-20 h-20 mx-auto mb-6 bg-gold/20 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-10 h-10 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gold mb-3">محتوى نمط الحياة</h3>
+                        <p class="text-gold/60 leading-relaxed">لحظات أنيقة من الحياة اليومية تلهمكِ</p>
+                    </div>
+                </div>
+                
+                <div class="reveal cinematic-reveal" style="transition-delay: 0.3s;">
+                    <div class="luxury-card rounded-2xl p-8 h-full text-center group">
+                        <div class="w-20 h-20 mx-auto mb-6 bg-gold/20 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-10 h-10 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gold mb-3">الأزياء</h3>
+                        <p class="text-gold/60 leading-relaxed">قطع أزياء مختارة بعناية لإطلالات مميزة</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-24 bg-navy-dark relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <span class="inline-block px-4 py-2 bg-gold/10 text-gold rounded-full text-sm font-semibold mb-4">المعرض</span>
+                <h2 class="text-4xl md:text-5xl font-display font-bold mb-4 text-gold">
+                    لحظات <span class="text-gold-light">أنيقة</span>
+                </h2>
+                <p class="text-lg text-gold/60 max-w-2xl mx-auto">استعرضي أجمل اللحظات والمنشورات من حسابنا</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="reveal cinematic-reveal">
+                    <div class="luxury-card rounded-2xl overflow-hidden group">
+                        <div class="aspect-square image-hover">
+                            <img src="images/posts/post_DN2o87v2GTL.jpg" alt="JUN Gallery 1" class="w-full h-full object-cover" onerror="this.src='images/profile/Logo.jpg'">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-lg font-bold text-gold mb-2">محتوى من الحساب</h3>
+                            <p class="text-gold/60 text-sm">@jun.omn</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="reveal cinematic-reveal" style="transition-delay: 0.1s;">
+                    <div class="luxury-card rounded-2xl overflow-hidden group">
+                        <div class="aspect-square image-hover">
+                            <img src="images/posts/post_DKcfv3YK4Zm.jpg" alt="JUN Gallery 2" class="w-full h-full object-cover" onerror="this.src='images/profile/Logo.jpg'">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-lg font-bold text-gold mb-2">محتوى جمالي</h3>
+                            <p class="text-gold/60 text-sm">@jun.omn</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="reveal cinematic-reveal" style="transition-delay: 0.2s;">
+                    <div class="luxury-card rounded-2xl overflow-hidden group">
+                        <div class="aspect-square image-hover">
+                            <img src="images/profile/Logo.jpg" alt="JUN Logo" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-lg font-bold text-gold mb-2">الشعار الرسمي</h3>
+                            <p class="text-gold/60 text-sm">الهوية البصرية لـ @jun.omn</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Why Choose Us Section -->
+    <section class="py-24 bg-navy relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <span class="inline-block px-4 py-2 bg-gold/10 text-gold rounded-full text-sm font-semibold mb-4">لماذا JUN</span>
+                <h2 class="text-4xl md:text-5xl font-display font-bold mb-4 text-gold">
+                    لماذا تختارين <span class="text-gold-light">JUN</span>
+                </h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="reveal cinematic-reveal">
+                    <div class="luxury-card rounded-2xl p-8 text-center h-full">
+                        <div class="w-24 h-24 mx-auto mb-6 rounded-full gold-gradient flex items-center justify-center text-4xl font-display font-bold text-navy box-glow">1</div>
+                        <h3 class="text-xl font-bold text-gold mb-4">محتوى أصيل</h3>
+                        <p class="text-gold/60 leading-relaxed">كل منشور يعكس شخصيتي ورؤيتي الفريدة للحياة والجمال</p>
+                    </div>
+                </div>
+                
+                <div class="reveal cinematic-reveal" style="transition-delay: 0.1s;">
+                    <div class="luxury-card rounded-2xl p-8 text-center h-full">
+                        <div class="w-24 h-24 mx-auto mb-6 rounded-full gold-gradient flex items-center justify-center text-4xl font-display font-bold text-navy box-glow">2</div>
+                        <h3 class="text-xl font-bold text-gold mb-4">جودة عالية</h3>
+                        <p class="text-gold/60 leading-relaxed">صورة ومحتوى عالي الجودة بأحدث المعايير الاحترافية</p>
+                    </div>
+                </div>
+                
+                <div class="reveal cinematic-reveal" style="transition-delay: 0.2s;">
+                    <div class="luxury-card rounded-2xl p-8 text-center h-full">
+                        <div class="w-24 h-24 mx-auto mb-6 rounded-full gold-gradient flex items-center justify-center text-4xl font-display font-bold text-navy box-glow">3</div>
+                        <h3 class="text-xl font-bold text-gold mb-4">تواصل حقيقي</h3>
+                        <p class="text-gold/60 leading-relaxed">تواصل مباشر وحميمي مع مجتمعنا المميز من النساء</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-navy-dark relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto">
+                <div class="text-center mb-12 reveal">
+                    <span class="inline-block px-4 py-2 bg-gold/10 text-gold rounded-full text-sm font-semibold mb-4">تواصلي معنا</span>
+                    <h2 class="text-4xl md:text-5xl font-display font-bold mb-4 text-gold">
+                        تواصلي <span class="text-gold-light">معنا</span>
+                    </h2>
+                    <p class="text-lg text-gold/60">هل أنتِ مستعدة لاكتشاف المزيد؟ تواصلي معنا اليوم</p>
+                </div>
+                
+                <div class="luxury-card rounded-3xl p-8 box-glow reveal">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <a href="https://www.instagram.com/jun.omn/" target="_blank" class="flex items-center p-6 rounded-2xl bg-gradient-to-br from-gold/10 to-gold/5 hover:from-gold/20 hover:to-gold/10 transition-all duration-300 group">
+                            <div class="w-16 h-16 rounded-full gold-gradient flex items-center justify-center ml-4 group-hover:scale-110 transition-transform">
+                                <svg class="w-8 h-8 text-navy" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.919-.058-1.265-.07-1.644-.07-4.849 0-3.204.014-3.583.072-4.848.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-5.728 2.667-5.928 6.799-.058 1.265-.072 1.644-.072 4.848 0 3.205.014 3.583.072 4.848.2 4.158 2.406 6.75 6.799 6.95 1.281.058 1.645.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.342-.2 4.158-2.806 6.75-6.75 6.95-1.296.058-1.664.072-4.948.072-3.259 0-3.667-.014-4.947-.072-4.349-.2-6.749-2.813-6.95-6.95-.059-1.265-.073-1.645-.073-4.848 0-3.259.014-3.667.072-4.947.2-4.157 2.806-6.75 6.95-6.95 1.281-.058 1.649-.074 4.948-.074zm0-6.163c-3.521 0-6.379 2.882-6.379 6.379s2.882 6.378 6.379 6.378 6.378-2.882 6.378-6.378c0-3.521-2.882-6.379-6.378-6.379zm0 10.5c-2.206 0-4-1.794-4-4 0-2.206 1.794-4 4-4s4 1.794 4 4c0 2.206-1.794 4-4 4zm8.335-12.536c-.145-.897-.75-1.691-1.691-1.836-.93-.145-1.855.116-2.487.703-.63.587-1.063 1.523-1.211 2.45-.148.927.116 1.858.703 2.487.587.63 1.523 1.063 2.45 1.211.93.148 1.895-.116 2.487-.703.897-.587 1.691-1.691 1.836-2.487.145-.93-.116-1.855-.703-2.487-.587-.63-1.523-1.063-2.45-1.211z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-gold">Instagram</h3>
+                                <p class="text-gold-light">@jun.omn</p>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.snapchat.com/@juhainahamood" target="_blank" class="flex items-center p-6 rounded-2xl bg-gradient-to-br from-gold/10 to-gold/5 hover:from-gold/20 hover:to-gold/10 transition-all duration-300 group">
+                            <div class="w-16 h-16 rounded-full bg-yellow-400 flex items-center justify-center ml-4 group-hover:scale-110 transition-transform">
+                                <svg class="w-8 h-8 text-navy" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12.206.793c.99 0 4.347.276 5.93 3.821.529 1.193.403 3.219.299 4.847l-.003.06c-.012.18-.022.345-.03.51.075.045.203.09.401.09.3-.016.659-.12 1.033-.301.165-.088.344-.104.464-.104.182 0 .359.029.509.09.45.149.734.479.734.838.015.449-.39.839-1.213 1.168-.089.029-.209.075-.344.119-.45.135-1.139.36-1.139.99 0 .225.074.405.224.554l.015.015c.08.075.164.149.224.225.329.434.384 1.004.384 1.513 0 .675-.12 1.464-.764 2.144-.629.675-1.724 1.004-3.223 1.004h-.01c-.149 0-.299-.015-.449-.03a3.466 3.466 0 00-.345.509c-.195.39-.479.96-.959 1.439-.584.584-1.274.869-2.128.869-.052 0-.102-.005-.152-.01a3.466 3.466 0 00-.3.01c-.904 0-1.664-.39-2.333-.99-.66-.589-1.199-1.424-1.933-2.803-.09-.165-.18-.344-.285-.524-.254-.434-.659-.869-1.363-.869h-.01c-.135 0-.27.015-.405.045l-.015.015c-.239.075-.449.12-.644.12-.614 0-1.064-.344-1.394-.794-.225-.3-.405-.659-.539-1.033-.06-.18-.105-.36-.15-.54-.075-.285-.135-.555-.18-.749-.27-1.14-.15-2.144.03-2.834.15-.6.344-1.11.584-1.544.495-.885 1.094-1.59 1.829-2.144.75-.555 1.605-.9 2.579-1.049l.06-.01c.18-.025.375-.045.57-.06.21-.02.42-.03.63-.03h.01c.21 0 .42.01.63.03.195.015.39.035.57.06l.06.01c.975.15 1.83.495 2.579 1.049.735.555 1.335 1.26 1.829 2.144.24.435.435.945.584 1.544.18.69.3 1.694.03 2.834-.045.195-.105.465-.18.749z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-gold">Snapchat</h3>
+                                <p class="text-gold-light">@juhainahamood</p>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="mt-8 text-center">
+                        <p class="text-gold/60 mb-4">أو تواصلي معنا عبر الرسائل المباشرة</p>
+                        <a href="https://www.instagram.com/jun.omn/" target="_blank" class="inline-flex items-center px-8 py-4 rounded-full gold-gradient text-navy font-semibold text-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                            </svg>
+                            راسلنا الآن
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-navy-dark text-gold py-16 border-t border-gold/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-3 space-x-reverse mb-6">
+                        <img src="images/profile/Logo.jpg" alt="JUN" class="w-14 h-14 rounded-full">
+                        <div>
+                            <h3 class="text-2xl font-display font-bold text-gold">JUN</h3>
+                            <p class="text-gold-light">@jun.omn</p>
+                        </div>
+                    </div>
+                    <p class="text-gold/60 mb-6 max-w-md leading-relaxed">
+                        علامة جمالية ونمط حياة فاخرة من مسقط، عُمان. بواسطة جهناء حمود. نقدم محتوى بصري أنيق واحترافي يعكس جمال الطبيعة العمانية.
+                    </p>
+                    <div class="flex space-x-4 space-x-reverse">
+                        <a href="https://www.instagram.com/jun.omn/" target="_blank" class="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center hover:bg-gold transition-colors">
+                            <svg class="w-6 h-6 text-gold" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.919-.058-1.265-.07-1.644-.07-4.849 0-3.204.014-3.583.072-4.848.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-5.728 2.667-5.928 6.799-.058 1.265-.072 1.644-.072 4.848 0 3.205.014 3.583.072 4.848.2 4.158 2.406 6.75 6.799 6.95 1.281.058 1.645.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.342-.2 4.158-2.806 6.75-6.75 6.95-1.296.058-1.664.072-4.948.072-3.259 0-3.667-.014-4.947-.072-4.349-.2-6.749-2.813-6.95-6.95-.059-1.265-.073-1.645-.073-4.848 0-3.259.014-3.667.072-4.947.2-4.157 2.806-6.75 6.95-6.95 1.281-.058 1.649-.074 4.948-.074zm0-6.163c-3.521 0-6.379 2.882-6.379 6.379s2.882 6.378 6.379 6.378 6.378-2.882 6.378-6.378c0-3.521-2.882-6.379-6.378-6.379zm0 10.5c-2.206 0-4-1.794-4-4 0-2.206 1.794-4 4-4s4 1.794 4 4c0 2.206-1.794 4-4 4zm8.335-12.536c-.145-.897-.75-1.691-1.691-1.836-.93-.145-1.855.116-2.487.703-.63.587-1.063 1.523-1.211 2.45-.148.927.116 1.858.703 2.487.587.63 1.523 1.063 2.45 1.211.93.148 1.895-.116 2.487-.703.897-.587 1.691-1.691 1.836-2.487.145-.93-.116-1.855-.703-2.487-.587-.63-1.523-1.063-2.45-1.211z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.snapchat.com/@juhainahamood" target="_blank" class="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center hover:bg-yellow-400 transition-colors">
+                            <svg class="w-6 h-6 text-gold" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12.206.793c.99 0 4.347.276 5.93 3.821.529 1.193.403 3.219.299 4.847l-.003.06c-.012.18-.022.345-.03.51.075.045.203.09.401.09.3-.016.659-.12 1.033-.301.165-.088.344-.104.464-.104.182 0 .359.029.509.09.45.149.734.479.734.838.015.449-.39.839-1.213 1.168-.089.029-.209.075-.344.119-.45.135-1.139.36-1.139.99 0 .225.074.405.224.554l.015.015c.08.075.164.149.224.225.329.434.384 1.004.384 1.513 0 .675-.12 1.464-.764 2.144-.629.675-1.724 1.004-3.223 1.004h-.01c-.149 0-.299-.015-.449-.03a3.466 3.466 0 00-.345.509c-.195.39-.479.96-.959 1.439-.584.584-1.274.869-2.128.869-.052 0-.102-.005-.152-.01a3.466 3.466 0 00-.3.01c-.904 0-1.664-.39-2.333-.99-.66-.589-1.199-1.424-1.933-2.803-.09-.165-.18-.344-.285-.524-.254-.434-.659-.869-1.363-.869h-.01c-.135 0-.27.015-.405.045l-.015.015c-.239.075-.449.12-.644.12-.614 0-1.064-.344-1.394-.794-.225-.3-.405-.659-.539-1.033-.06-.18-.105-.36-.15-.54-.075-.285-.135-.555-.18-.749-.27-1.14-.15-2.144.03-2.834.15-.6.344-1.11.584-1.544.495-.885 1.094-1.59 1.829-2.144.75-.555 1.605-.9 2.579-1.049l.06-.01c.18-.025.375-.045.57-.06.21-.02.42-.03.63-.03h.01c.21 0 .42.01.63.03.195.015.39.035.57.06l.06.01c.975.15 1.83.495 2.579 1.049.735.555 1.335 1.26 1.829 2.144.24.435.435.945.584 1.544.18.69.3 1.694.03 2.834-.045.195-.105.465-.18.749z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6 text-gold">روابط سريعة</h4>
+                    <ul class="space-y-3 text-gold/60">
+                        <li><a href="#home" class="hover:text-gold transition-colors">الرئيسية</a></li>
+                        <li><a href="#about" class="hover:text-gold transition-colors">من نحن</a></li>
+                        <li><a href="#services" class="hover:text-gold transition-colors">خدماتنا</a></li>
+                        <li><a href="#gallery" class="hover:text-gold transition-colors">المعرض</a></li>
+                        <li><a href="#contact" class="hover:text-gold transition-colors">تواصلي معنا</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6 text-gold">التصنيفات</h4>
+                    <ul class="space-y-3 text-gold/60">
+                        <li>العناية بالبشرة</li>
+                        <li>المكياج</li>
+                        <li>نمط الحياة</li>
+                        <li>الأزياء</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gold/20 mt-12 pt-8 text-center">
+                <img src="images/profile/Logo.jpg" alt="JUN" class="w-16 mx-auto mb-4 rounded-full">
+                <p class="text-gold/60">© 2026 JUN (@jun.omn). جميع الحقوق محفوظة.</p>
+                <p class="text-gold/40 text-sm mt-2">بواسطة جهناء حمود | مسقط، عُمان</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, easing: 'ease-in-out', once: true, mirror: false });
+        
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const loading = document.getElementById('loading');
+                loading.style.opacity = '0';
+                setTimeout(function() { loading.style.display = 'none'; }, 500);
+            }, 1500);
+        });
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add('active'); }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        
+        document.querySelectorAll('.reveal, .cinematic-reveal').forEach(el => observer.observe(el));
+        
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            navbar.classList.toggle('nav-scrolled', window.scrollY > 100);
+        });
+        
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+        
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+        
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+            });
+        });
+        
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            const style = document.createElement('style');
+            style.textContent = `* { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }`;
+            document.head.appendChild(style);
+        }
+    </script>
+</body>
+</html>

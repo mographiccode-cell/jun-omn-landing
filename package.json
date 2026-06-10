@@ -1,0 +1,33 @@
+{
+  "name": "jun-omn-website",
+  "version": "1.0.0",
+  "description": "JUN - علامة جمالية ونمط حياة فاخرة من مسقط، عُمان | @jun.omn",
+  "main": "landing-page.html",
+  "scripts": {
+    "build": "echo \"تم البناء بنجاح - الصفحة جاهزة للنشر\"",
+    "deploy": "echo \"تم النشر إلى GitHub Pages\"",
+    "lint": "echo \"لا توجد أدوات فحص متاحة\"",
+    "typecheck": "echo \"لا توجد أدوات فحص أنواع متاحة\""
+  },
+  "keywords": [
+    "jun.omn",
+    "beauty",
+    "lifestyle",
+    "oman",
+    "muscat",
+    "juhaina hamood",
+    "website",
+    "landing-page",
+    "tailwind"
+  ],
+  "author": "Juhaina Hamood",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jun-omn/jun-omn-website.git"
+  },
+  "homepage": "https://jun-omn.github.io/jun-omn-website",
+  "engines": {
+    "node": ">= 16.0.0"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "username": "jun.omn",
+  "display_name": "• 𝗝𝗨𝗡",
+  "logo_source": "images/profile/Logo.jpg",
+  "logo_type": "wordmark",
+  "logo_downloaded": true,
+  "logo_file_size": "27KB",
+  "logo_download_date": "2026-06-11",
+  "brand_colors": {
+    "primary_color": "#3D4F5F",
+    "secondary_color": "#C9A96E",
+    "accent_color": "#D4B896",
+    "background_color": "#3D4F5F",
+    "text_color": "#C9A96E",
+    "dark_bg": "#2C3E4A",
+    "light_gold": "#E8D5B5",
+    "white": "#FFFFFF",
+    "cream": "#F5F0E8"
+  },
+  "color_analysis": {
+    "background": {
+      "name": "Dark Navy Blue",
+      "hex": "#3D4F5F",
+      "description": "لون أزرق داكن أنيق يعكس الفخامة والترقي"
+    },
+    "logo": {
+      "name": "Gold/Champagne",
+      "hex": "#C9A96E",
+      "description": "لون ذهبي دافئ يعكس الأناقة والجودة"
+    }
+  },
+  "typography_direction": "rtl",
+  "visual_style": "luxury-minimalist",
+  "tone_of_voice": "elegant-professional",
+  "imagery_style": "beauty-lifestyle",
+  "layout_notes": "clean-minimalist-luxury-dark",
+  "identity_confidence": "high",
+  "identity_notes": "تم تحليل الشعار الأصلي لحساب @jun.omn. الهوية تعكس الأناقة والفخامة مع تصميم بسيط وأنيق. الألوان مأخوذة مباشرة من الشعار: خلفية زرقاء داكنة ونص ذهبي.",
+  "logo_analysis": {
+    "style": "wordmark - كلمة JUN بخط مميز",
+    "features": [
+      "حرف j بتصميم منحني أنيق",
+      "حرف u بسيط ونظيف",
+      "حرف n بنقطة فوقه (تشبه العلامات العربية)",
+      "عنصر زخرفي صغير فوق الـ j"
+    ],
+    "impression": "فخامة، أناقة، بساطة، حداثة"
+  },
+  "brand_personality": {
+    "elegance": "very_high",
+    "sophistication": "very_high",
+    "luxury": "very_high",
+    "minimalism": "high",
+    "authenticity": "high"
+  },
+  "target_audience": {
+    "primary": "Women interested in luxury beauty and lifestyle",
+    "secondary": "Young adults interested in Omani culture and fashion",
+    "age_range": "18-35",
+    "location": "Oman and GCC region"
+  }
+}
