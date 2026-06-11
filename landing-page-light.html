@@ -133,27 +133,29 @@ body{font-family:var(--font);background:var(--bg);color:var(--tx);overflow-x:hid
 @keyframes hReveal{to{opacity:1;transform:translateY(0)}}
 
 /* Logo Visual */
-.hero-visual{position:relative;display:flex;align-items:center;justify-content:center;width:100%;aspect-ratio:1;max-width:420px;opacity:0;transform:scale(.6) rotate(-10deg);animation:visIn 1.2s .4s cubic-bezier(.4,0,.2,1) forwards}
-@keyframes visIn{to{opacity:1;transform:scale(1) rotate(0deg)}}
-.hero-visual-bg{position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle,var(--gold-dim) 0%,transparent 70%);filter:blur(60px);animation:visGlow 4s ease-in-out infinite}
+.hero-visual{position:relative;display:flex;align-items:center;justify-content:center;width:100%;opacity:0;transform:scale(.8) translateX(30px);animation:visIn 1.2s .4s cubic-bezier(.4,0,.2,1) forwards}
+@keyframes visIn{to{opacity:1;transform:scale(1) translateX(0)}}
+.hero-visual-bg{position:absolute;inset:-60px;border-radius:50%;background:radial-gradient(circle,var(--gold-dim) 0%,transparent 70%);filter:blur(80px);animation:visGlow 4s ease-in-out infinite}
 @keyframes visGlow{0%,100%{opacity:.3;transform:scale(.95)}50%{opacity:.6;transform:scale(1.05)}}
 
-/* Rings */
-.hero-ring{position:absolute;border:1px solid var(--bd);border-radius:50%;animation:ringOrbit linear infinite}
-.hero-ring.r1{width:100%;height:100%;animation-duration:25s}
-.hero-ring.r2{width:120%;height:120%;animation-duration:35s;animation-direction:reverse;opacity:.5}
-.hero-ring.r3{width:140%;height:140%;animation-duration:45s;opacity:.25;border-style:dashed}
-.hero-ring::before{content:'';position:absolute;top:-4px;left:50%;width:8px;height:8px;background:var(--gold);border-radius:50%;transform:translateX(-50%);box-shadow:0 0 12px rgba(201,169,110,.5)}
-@keyframes ringOrbit{to{transform:rotate(360deg)}}
+/* Post Stack */
+.hero-post-stack{position:relative;width:320px;height:380px;perspective:800px}
+.hero-post-card{position:absolute;width:240px;height:320px;border-radius:18px;overflow:hidden;border:2px solid var(--bd);box-shadow:0 20px 60px rgba(0,0,0,.3);transition:all .5s cubic-bezier(.4,0,.2,1);cursor:pointer}
+.hero-post-card img{width:100%;height:100%;object-fit:cover;display:block}
+.hero-post-card:hover{transform:translateY(-8px) rotate(0deg) scale(1.05)!important;z-index:10}
+.hero-post-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7) 0%,transparent 50%);opacity:0;transition:opacity .3s;display:flex;align-items:flex-end;padding:16px}
+.hero-post-card:hover .hero-post-overlay{opacity:1}
+.hero-post-engagement{display:flex;gap:14px;font-size:.75rem;color:#fff;font-weight:600}
 
-.hero-logo{width:200px;height:200px;border-radius:50%;object-fit:cover;border:2px solid var(--bd);position:relative;z-index:2;box-shadow:0 0 40px rgba(201,169,110,.08);transition:all .6s}
-.hero-logo:hover{transform:scale(1.06);box-shadow:0 0 80px rgba(201,169,110,.2)}
+.hero-post-card.hp1{top:0;left:0;transform:rotate(-4deg);z-index:3;animation:postIn .8s .6s cubic-bezier(.4,0,.2,1) forwards;opacity:0}
+.hero-post-card.hp2{top:30px;left:60px;transform:rotate(3deg);z-index:2;animation:postIn .8s .8s cubic-bezier(.4,0,.2,1) forwards;opacity:0}
+.hero-post-card.hp3{top:60px;left:30px;transform:rotate(-1deg);z-index:1;width:180px;height:180px;border-radius:50%;animation:postIn .8s 1s cubic-bezier(.4,0,.2,1) forwards;opacity:0}
+@keyframes postIn{to{opacity:1}}
 
-/* Floating cards around logo */
+/* Floating cards */
 .hero-float{position:absolute;background:var(--sf);backdrop-filter:blur(16px);border:1px solid var(--bd);border-radius:14px;padding:14px 18px;display:flex;align-items:center;gap:10px;z-index:3;opacity:0;animation:floatIn .6s cubic-bezier(.4,0,.2,1) forwards;box-shadow:0 8px 32px rgba(0,0,0,.15)}
-.hero-float.f1{top:8%;right:-10%;animation-delay:1.4s}
-.hero-float.f2{bottom:12%;left:-8%;animation-delay:1.6s}
-.hero-float.f3{top:50%;right:-18%;animation-delay:1.8s}
+.hero-float.f1{top:5%;right:-20%;animation-delay:1.4s}
+.hero-float.f2{bottom:10%;left:-15%;animation-delay:1.6s}
 @keyframes floatIn{to{opacity:1}}
 .hero-float-ico{width:38px;height:38px;background:var(--gold);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
 .hero-float-txt span{display:block;font-size:.68rem;color:var(--tx3);white-space:nowrap}
@@ -174,8 +176,10 @@ body{font-family:var(--font);background:var(--bg);color:var(--tx);overflow-x:hid
 .hero-sub{margin:0 auto 36px}
 .hero-actions{justify-content:center}
 .hero-stats{justify-content:center}
-.hero-left{order:-1;max-width:320px;margin:0 auto}
-.hero-visual{max-width:300px}
+.hero-left{order:-1;max-width:350px;margin:0 auto}
+.hero-post-stack{width:280px;height:340px}
+.hero-post-card{width:200px;height:270px}
+.hero-post-card.hp3{width:140px;height:140px}
 .hero-float{display:none}
 }
 .hero-sv{font-size:2rem;font-weight:900;color:var(--gold);letter-spacing:-1px}
@@ -399,14 +403,39 @@ body{font-family:var(--font);background:var(--bg);color:var(--tx);overflow-x:hid
 </div>
 </div>
 
-<!-- Left side: Visual -->
+<!-- Left side: Instagram Posts Visual -->
 <div class="hero-left">
 <div class="hero-visual">
 <div class="hero-visual-bg"></div>
-<div class="hero-ring r1"></div>
-<div class="hero-ring r2"></div>
-<div class="hero-ring r3"></div>
-<img src="images/profile/Logo.jpg" alt="JUN" class="hero-logo">
+<div class="hero-post-stack">
+<div class="hero-post-card hp1">
+<img src="images/posts/post_DN2o87v2GTL.jpg" alt="JUN Post" loading="eager">
+<div class="hero-post-overlay">
+<div class="hero-post-engagement">
+<span>â‌¤ï¸ڈ 2,345</span>
+<span>ًں’¬ 89</span>
+</div>
+</div>
+</div>
+<div class="hero-post-card hp2">
+<img src="images/posts/post_DKcfv3YK4Zm.jpg" alt="JUN Post" loading="eager">
+<div class="hero-post-overlay">
+<div class="hero-post-engagement">
+<span>â‌¤ï¸ڈ 1,892</span>
+<span>ًں’¬ 67</span>
+</div>
+</div>
+</div>
+<div class="hero-post-card hp3">
+<img src="images/profile/Logo.jpg" alt="JUN Profile" loading="eager">
+<div class="hero-post-overlay">
+<div class="hero-post-engagement">
+<span>@jun.omn</span>
+<span>85K</span>
+</div>
+</div>
+</div>
+</div>
 <div class="hero-float f1">
 <div class="hero-float-ico">ًں›چ</div>
 <div class="hero-float-txt"><span>طھظˆطµظٹظ„ ط¹ظڈظ…ط§ظ†</span><strong>ط³ط±ظٹط¹ ظˆط¢ظ…ظ†</strong></div>
@@ -414,10 +443,6 @@ body{font-family:var(--font);background:var(--bg);color:var(--tx);overflow-x:hid
 <div class="hero-float f2">
 <div class="hero-float-ico">â­گ</div>
 <div class="hero-float-txt"><span>طھظ‚ظٹظٹظ…ط§طھ</span><strong>+5000 ظ…ط±ط§ط¬ط¹ط©</strong></div>
-</div>
-<div class="hero-float f3">
-<div class="hero-float-ico">ًں’ژ</div>
-<div class="hero-float-txt"><span>ظ…ظ†طھط¬ط§طھ</span><strong>ط£طµظ„ظٹط© 100%</strong></div>
 </div>
 </div>
 </div>
